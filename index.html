@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Il Mio Portfolio</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    a {
+      text-decoration: none;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    @keyframes slideIn {
+      from { transform: translateY(100px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+    @keyframes glow {
+      from { box-shadow: 0 0 10px #4b0082; }
+      to { box-shadow: 0 0 20px #4b0082; }
+    }
+    @keyframes glow2 {
+      from { text-shadow: 0 0 5px #777777; }
+      to { text-shadow: 0 0 10px #777777; }
+    }
+    html, body {
+      height: 100%; /* Imposta l'altezza della pagina al 100% */
+      display: flex; /* Utilizza flexbox per il layout */
+      flex-direction: column; /* Imposta la direzione della colonna */
+      margin: 0; /* Rimuovi il margine */
+    }
+    body { 
+      font-family: Arial, sans-serif; 
+      background-color: #1d1d1d; 
+      color: white; 
+      animation: fadeIn 2s; 
+    }
+    .header { 
+      background-color: #4b0082; 
+      color: white; 
+      text-align: center; 
+      padding: 1em 0; 
+      margin-bottom: 20px; 
+      animation: glow 1.5s infinite alternate; 
+    }
+    .container { 
+      width: 80%; 
+      margin: auto; 
+      flex: 1; /* Consente alla parte centrale di occupare lo spazio disponibile */
+      animation: fadeIn 3s; 
+    }
+    .calcolatrice-container { 
+      background-color: #4b0082; 
+      padding: 20px; 
+      border-radius: 8px; 
+      text-align: center; 
+      display: inline-block; 
+      animation: glow 1.5s infinite alternate, slideIn 1.5s; 
+    }
+    .button { 
+        background-color: #2e2e2e; 
+        border: none; 
+        color: #ffffff; 
+        padding: 10px 20px; 
+        text-align: center; 
+        text-decoration: none; 
+        display: inline-block; 
+        font-size: 16px; 
+        margin: 4px 2px; 
+        cursor: pointer; 
+        border-radius: 4px; 
+        transition: background-color 0.3s, color 0.3s; 
+        box-shadow: white 0px 0px 0px 0px
+    }
+    .scrittatag{
+        background-color: #2e2e2e; 
+        border: none; 
+        color: #ffffff; 
+        padding: 10px 20px; 
+        text-align: center; 
+        display: inline-block; 
+        font-size: 16px; 
+        margin: 4px 2px; 
+        border-radius: 4px; 
+        transition: background-color 0.3s, color 0.3s; 
+        box-shadow: white 0px 0px 1px 2px
+    }
+    .button:hover { 
+      background-color: #e0e0e0; 
+      color: rgb(0, 0, 0); 
+      box-shadow: white 0px 0px 10px 1px
+    }
+    .project { 
+      background-image: linear-gradient(to left, rgba(0, 0, 0, 0) 50%, rgba(51, 51, 51, 1) 85%), url('percorso/della/tua/immagine.jpg'); 
+      background-size: cover; 
+      background-position: center; 
+      margin: 1em 0; 
+      padding: 1em; 
+      border-radius: 8px; 
+      color: white; 
+      position: relative; 
+      transition: transform 0.3s ease, color 0.3s; /* Aggiunta della transizione di 1 secondo per transform */
+      animation: slideIn 1s; 
+    }
+    .project:hover { 
+        box-shadow: 0 0 3px #ffffff;
+        color: black;
+        background: linear-gradient(to left, rgba(0, 0, 0, 0) 50%, rgb(218, 218, 218) 85%),url();
+        transform: translate(10px, -5px); /* Sposta a destra e in alto */
+    }
+
+    #progettoCube-Pit2{
+      background-size: cover;
+      background-image: linear-gradient(to left, rgba(0, 0, 0, 0) 50%, rgba(51, 51, 51, 1) 85%), url('https://m.gjcdn.net/game-header/1800/852071-crop0_125_1293_486-htkydkzk-v4.webp'); /* Cambia sfumatura, stessa immagine */
+    }
+    #progettoCube-Pit2:hover{
+      background-size: cover;
+      background-image: linear-gradient(to left, rgba(0, 0, 0, 0) 50%, rgb(218, 218, 218) 85%), url('https://m.gjcdn.net/game-header/1800/852071-crop0_125_1293_486-htkydkzk-v4.webp'); /* Cambia sfumatura, stessa immagine */
+    }
+    #progettoHouseGeneratorMinecraft{
+      background-size: cover;
+      background-image: linear-gradient(to left, rgba(0, 0, 0, 0) 50%, rgba(51, 51, 51, 1) 85%), url('https://cdn.discordapp.com/attachments/1294061695257546895/1294062238281240586/image.png?ex=6709a4e0&is=67085360&hm=de4285c7d540d4f4462d19dffd8a3f97808f2bb7690c262fc048715324fe013a&');
+    }
+    #progettoHouseGeneratorMinecraft:hover{
+      background-size: cover;
+      background-image: linear-gradient(to left, rgba(0, 0, 0, 0) 50%, rgb(218, 218, 218) 85%), url('https://cdn.discordapp.com/attachments/1294061695257546895/1294062238281240586/image.png?ex=6709a4e0&is=67085360&hm=de4285c7d540d4f4462d19dffd8a3f97808f2bb7690c262fc048715324fe013a&');
+    }
+    #progettoAnimeList{
+      background-size: cover;
+      background-image: linear-gradient(to left, rgba(0, 0, 0, 0) 50%, rgba(51, 51, 51, 1) 85%), url('https://cdn.discordapp.com/attachments/1294061695257546895/1294064913433493535/image.png?ex=6709a75d&is=670855dd&hm=62b92fe5c3046bcc6cf1c20a8b552cb9f0c6d95f68f7c22c8e104998cde8653a&');
+    }
+    #progettoAnimeList:hover{
+      background-size: cover;
+      background-image: linear-gradient(to left, rgba(0, 0, 0, 0) 50%, rgb(218, 218, 218) 85%), url('https://cdn.discordapp.com/attachments/1294061695257546895/1294064913433493535/image.png?ex=6709a75d&is=670855dd&hm=62b92fe5c3046bcc6cf1c20a8b552cb9f0c6d95f68f7c22c8e104998cde8653a&');
+    }
+
+    #progettoBackRooms{
+      background-size: cover;
+      background-image: linear-gradient(to left, rgba(0, 0, 0, 0) 50%, rgba(51, 51, 51, 1) 85%), url('https://cdn.discordapp.com/attachments/1294061695257546895/1294068662931816509/Screenshot_2024-10-11_004332.png?ex=6709aadb&is=6708595b&hm=76744fc3fa9183555aee399f059977e29639ff967abe5efc65fa705cd991c60f&');
+    }
+    #progettoBackRooms:hover{
+      background-size: cover;
+      background-image: linear-gradient(to left, rgba(0, 0, 0, 0) 50%, rgb(218, 218, 218) 85%), url('https://cdn.discordapp.com/attachments/1294061695257546895/1294068662931816509/Screenshot_2024-10-11_004332.png?ex=6709aadb&is=6708595b&hm=76744fc3fa9183555aee399f059977e29639ff967abe5efc65fa705cd991c60f&');
+    }
+    
+    .scritta-container{
+        border-radius: 15px;
+        background-color: #1e1e1e;
+        animation: FadeIn 1.5s;
+        display: inline-block; 
+    }
+    .footer { 
+      background-color: #4b0082; 
+      color: white; 
+      text-align: center; 
+      padding: 1em 0; 
+      width: 100%; /* Assicura che il footer occupi tutta la larghezza */
+    }
+    .footer .socials { 
+      margin-top: 20px; 
+    }
+    .footer .socials a { 
+      color: white; 
+      margin: 0 10px; 
+      text-decoration: none; 
+      font-size: 18px; 
+    }
+    .footer .socials a i { 
+      margin-right: 5px; /* Spazio tra icona e testo */
+    }
+    h2 { 
+      animation: slideIn 1.5s; 
+    }
+    .search-bar { 
+      width: 100%; 
+      padding: 10px; 
+      font-size: 16px; 
+      border-radius: 4px; 
+      border: 1px solid #4b0082; 
+      margin-bottom: 20px; 
+      background-color: #4b0082; 
+      color: white; 
+      animation: glow 1.5s infinite alternate, slideIn 1.5s; 
+    }
+  </style>
+</head>
+<body>
+    <div class="header">
+        <div class="scritta-container" style="animation: fadeIn 1.5s;">
+            <h1>
+                <span style="color: #4dc9b0; animation: glow2 1.5s infinite alternate;padding-left: 60px;">Person</span>
+                <span style="color: #c3cbd4; animation: glow2 1.5s infinite alternate;">*</span><span style="color: #9cdcfe; animation: glow2 1.5s infinite alternate;">m </span> <!-- devono stare sulla stessa riga se no fanno uno spazio -->
+                <span style="color: #d4d4d4; animation: glow2 1.5s infinite alternate;"> = </span>
+                <span style="color: #c581b6; animation: glow2 1.5s infinite alternate;">new</span>
+                <span style="color: #4dc9b0; animation: glow2 1.5s infinite alternate;"> Person</span>
+                <span style="color: #b39faf; animation: glow2 1.5s infinite alternate;">(</span>
+                <span style="color: #ce9178; animation: glow2 1.5s infinite alternate;">"EnderPlayer"</span>
+                <span style="color: #b39faf; animation: glow2 1.5s infinite alternate;padding-right: 10px;">);</span>
+                <span style="color: #609755; animation: glow2 1.5s infinite alternate;padding-right: 60px;">//Crea un oggetto: persona.</span>
+            </h1>
+        </div>
+    </div>
+    <div class="container">
+        
+        <h2 style="text-align: center;">Siti</h2>
+        
+        <div style="text-align: center;">
+            <div class="calcolatrice-container">
+                
+                <a href="link_al_primo_sito" class="button">Sito 1</a>
+                <a href="link_al_secondo_sito" class="button">Sito 2</a>
+            </div>
+        </div>
+
+
+        <h2>Progetti:</h2>
+        
+        <input type="text" id="searchInput" class="search-bar" onkeyup="filterProjects()" placeholder="Cerca progetti...">
+        
+        <a href="pages/CubePit/CubePit.html">
+          <div class="project" id="progettoCube-Pit2">
+              <h2>Cube-Pit 2</h2>
+              <span class="scrittatag">C#</span>
+              <span class="scrittatag">Multipalyer</span>
+              <span class="scrittatag">Unity</span>
+              <p><b>Gioco survival. Sopravvivi a tutti i costi nella fossa!</b></p>
+          </div>
+        </a>
+
+        <a href="">
+          <div class="project" id="progettoHouseGeneratorMinecraft">
+                <h2>House Generator Minecraft</h2>
+                <span class="scrittatag">C#</span>
+                <span class="scrittatag">NBT File</span>
+                <span class="scrittatag">Unity</span>
+                <span class="scrittatag">Minecraft</span>
+                <p><b style="text-shadow: 0 0 1px white;">Generatore di Case in stile bizarro con creazione di file NBT <br> della struttura da usare su Minecraft.</b></p>
+          </div>
+        </a>
+
+        <a href="">
+          <div class="project" id="progettoAnimeList">
+              <h2>Lista Cartoni</h2>
+              <span class="scrittatag">HTML</span>
+              <span class="scrittatag">SQL</span>
+              <span class="scrittatag">php</span>
+              <p><b style="text-shadow: 0 0 1px white;"> Un sito dall'estetica semplice dove tramite un database <br>e un file php si preleva una lista di serie a cartone.</b></p>
+          </div>
+        </a>
+
+        <a href="">
+          <div class="project" id="progettoBackRooms">
+              <h2>BackRooms Game</h2>
+              <span class="scrittatag">C#</span>
+              <span class="scrittatag">Unity</span>
+              <span class="scrittatag">IA (behavior trees)</span>
+              <p><b style="text-shadow: 0 0 1px white;"> Gioco basato sulle BackRooms con obbiettivo raccogliere <br>i 5 cubi senza farsi prendere dal glich.</b></p>
+          </div>
+        </a>
+
+    </div>
+    
+    <div class="footer">
+        <p>&copy; 2024</p>
+        <div class="socials">
+            <a href="https://www.tiktok.com/@end3rpl4yer" target="_blank"><i class="fab fa-tiktok"></i>TikTok</a>
+            <a href="https://www.instagram.com/manuel_causo/" target="_blank"><i class="fab fa-instagram"></i>Instagram</a>
+            <a href="https://gamejolt.com/@End3rPl4yer" target="_blank"><i class="fas fa-gamepad"></i>Gamejolt</a>
+        </div>
+    </div>
+
+    <!-- Script per filtrare i progetti -->
+    <script>
+      function filterProjects() {
+        let input = document.getElementById('searchInput').value.toLowerCase();
+        let projects = document.getElementsByClassName('project');
+        for (let i = 0; i < projects.length; i++) {
+          let projectTitle = projects[i].getElementsByTagName("h2")[0].innerText.toLowerCase();
+          let projectDescription = projects[i].getElementsByTagName("p")[0].innerText.toLowerCase();
+          if (projectTitle.includes(input) || projectDescription.includes(input)) {
+            projects[i].style.display = "";
+          } else {
+            projects[i].style.display = "none";
+          }
+        }
+      }
+    </script>
+</body>
+</html>
+

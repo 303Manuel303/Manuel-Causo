@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cube-Pit</title>
+    <style>
+        body {
+            margin: 0;
+            background: linear-gradient(135deg, #001f3f, #0074D9);
+            overflow: hidden;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #fff;
+            text-align: center;
+        }
+        h1 {
+            margin: 20px 0;
+            font-size: 3em;
+            color: rgb(255, 255, 255);
+            text-shadow: 0 0 10px #00f, 0 0 20px #00f, 0 0 30px #0099ff;
+            border: 5px solid #00f;
+            padding: 10px;
+            display: inline-block;
+            box-shadow: 0 0 10px #00f, 0 0 20px #00f, 0 0 30px #0099ff;
+            background: rgba(0, 0, 0, 0.7);
+        }
+        .content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: calc(100vh - 200px);
+            gap: 30px;
+        }
+        .content img {
+            max-width: 100%;
+            height: auto;
+            border: 2px solid #00f;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .content img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 15px #00f, 0 0 25px #00f, 0 0 35px #0099ff;
+        }
+        .content div {
+            width: auto;
+            max-width: 50%;
+            text-align: center;
+            border: 2px solid #00f;
+            padding: 10px;
+            box-shadow: 0 0 10px #00f, 0 0 20px #00f, 0 0 30px #0099ff;
+            background: rgba(0, 0, 0, 0.7);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .content div:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 15px #00f, 0 0 25px #00f, 0 0 35px #0099ff;
+        }
+        .falling-cubes {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+        .cube {
+            width: 20px;
+            height: 20px;
+            background-color: #00f;
+            position: absolute;
+            animation: fall linear infinite;
+        }
+        @keyframes fall {
+            0% { transform: translateY(-100px); }
+            100% { transform: translateY(calc(100vh + 100px)); }
+        }
+        .cube-button {
+            display: inline-block;
+            padding: 15px 30px;
+            background-color: #00f;
+            color: #fff;
+            font-size: 1.2em;
+            border: none;
+            cursor: pointer;
+            text-decoration: none;
+            box-shadow: 0 0 10px #00f, 0 0 20px #00f, 0 0 30px #0099ff;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .cube-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 15px #00f, 0 0 25px #00f, 0 0 35px #0099ff;
+        }
+    </style>
+</head>
+<body>
+    <h1>Cube-Pit</h1>
+    <div class="content">
+        <div>
+            <img src="1_immagine.png" alt="Immagine 1">
+        </div>
+        <div>
+            <img src="2_immagine.png" alt="Immagine 2">
+        </div>
+    </div>
+    <a href="https://gamejolt.com/games/Cube-Pit/852071" class="cube-button">Link del Gioco</a>
+    <div class="falling-cubes" id="fallingCubes"></div>
+    <script>
+        function createCube() {
+            const cube = document.createElement('div');
+            cube.classList.add('cube');
+            cube.style.left = Math.random() * 100 + 'vw';
+            cube.style.animationDuration = Math.random() * 5 + 5 + 's';
+            document.getElementById('fallingCubes').appendChild(cube);
+            setTimeout(() => {
+                cube.remove();
+            }, 10000);
+        }
+        setInterval(createCube, 500);
+    </script>
+</body>
+</html>
