@@ -4,119 +4,169 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cube-Pit</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         body {
             margin: 0;
-            background: linear-gradient(135deg, #001f3f, #0074D9);
-            overflow: hidden;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            color: #fff;
+            /* BACKGROUND MODERNO:
+            Ho rimosso l'animazione dei cubi che cadevano e il vecchio gradiente.
+            Questo nuovo sfondo "Aurora" è più sottile, moderno e meno invasivo.
+            Utilizza gradienti radiali sfocati per un effetto di profondità.
+            */
+            background-color: #0c0a09;
+            background-image:
+                radial-gradient(at 20% 25%, hsla(212, 80%, 45%, 0.3) 0px, transparent 50%),
+                radial-gradient(at 80% 30%, hsla(288, 80%, 50%, 0.25) 0px, transparent 50%),
+                radial-gradient(at 25% 85%, hsla(180, 95%, 50%, 0.2) 0px, transparent 50%),
+                radial-gradient(at 80% 90%, hsla(30, 90%, 60%, 0.25) 0px, transparent 50%);
+            font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #f9fafb;
             text-align: center;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+            box-sizing: border-box;
+            overflow-x: hidden;
         }
+
+        /* TITOLO PRINCIPALE:
+        Ho rimosso il bordo e l'ombra neon per un look più pulito.
+        Il titolo ora usa un gradiente nel testo, un effetto molto moderno.
+        */
         h1 {
-            margin: 20px 0;
-            font-size: 3em;
-            color: rgb(255, 255, 255);
-            text-shadow: 0 0 10px #00f, 0 0 20px #00f, 0 0 30px #0099ff;
-            border: 5px solid #00f;
-            padding: 10px;
-            display: inline-block;
-            box-shadow: 0 0 10px #00f, 0 0 20px #00f, 0 0 30px #0099ff;
-            background: rgba(0, 0, 0, 0.7);
+            font-size: clamp(2.5em, 8vw, 5.5em); /* Dimensione fluida per adattarsi a tutti gli schermi */
+            font-weight: 700;
+            margin: 0 0 10px 0;
+            background: linear-gradient(90deg, #60a5fa 0%, #a78bfa 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            letter-spacing: -0.02em;
         }
+
+        .subtitle {
+            font-size: clamp(1em, 4vw, 1.5em);
+            margin-bottom: 40px;
+            color: #d1d5db; /* Colore più morbido per il sottotitolo */
+            font-weight: 400;
+            max-width: 600px;
+        }
+
         .content {
             display: flex;
             justify-content: center;
             align-items: center;
-            height: calc(100vh - 200px);
+            flex-wrap: wrap; /* Permette agli elementi di andare a capo su schermi piccoli */
             gap: 30px;
+            margin-bottom: 40px;
         }
-        .content img {
-            max-width: 100%;
-            height: auto;
-            border: 2px solid #00f;
-            transition: transform 0.3s, box-shadow 0.3s;
+
+        /* CARD "GLASSMORPHISM":
+        Le card ora hanno un effetto vetro traslucido (glassmorphism).
+        Sono più pulite, con un bordo sottile e un'ombra morbida che le fa fluttuare.
+        */
+        .card {
+            width: 320px;
+            max-width: 90vw;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            padding: 18px;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
-        .content img:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 15px #00f, 0 0 25px #00f, 0 0 35px #0099ff;
+
+        .card:hover {
+            transform: translateY(-10px); /* Animazione più fluida e direzionale */
+            box-shadow: 0 16px 40px 0 rgba(0, 0, 0, 0.45);
         }
-        .content div {
-            width: auto;
-            max-width: 50%;
-            text-align: center;
-            border: 2px solid #00f;
-            padding: 10px;
-            box-shadow: 0 0 10px #00f, 0 0 20px #00f, 0 0 30px #0099ff;
-            background: rgba(0, 0, 0, 0.7);
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-        .content div:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 15px #00f, 0 0 25px #00f, 0 0 35px #0099ff;
-        }
-        .falling-cubes {
-            position: fixed;
-            top: 0;
-            left: 0;
+
+        .card img {
             width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: -1;
+            border-radius: 16px; /* Bordi arrotondati per l'immagine interna */
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
-        .cube {
-            width: 20px;
-            height: 20px;
-            background-color: #00f;
-            position: absolute;
-            animation: fall linear infinite;
+
+        .card-desc {
+            font-size: 1.1em;
+            color: #e5e7eb;
+            margin-top: 15px;
+            font-weight: 400;
         }
-        @keyframes fall {
-            0% { transform: translateY(-100px); }
-            100% { transform: translateY(calc(100vh + 100px)); }
-        }
-        .cube-button {
+
+        /* PULSANTE MODERNO:
+        Il pulsante ora ha un gradiente più vivace e un'ombra che gli dà profondità.
+        L'animazione al passaggio del mouse è più discreta (un sollevamento).
+        */
+        .cta-button {
             display: inline-block;
-            padding: 15px 30px;
-            background-color: #00f;
-            color: #fff;
-            font-size: 1.2em;
+            margin-bottom: 40px;
+            padding: 16px 38px;
+            background: linear-gradient(90deg, #3b82f6 0%, #8b5cf6 100%);
+            color: #ffffff;
+            font-size: 1.25em;
+            font-family: 'Poppins', sans-serif;
             border: none;
+            border-radius: 14px;
             cursor: pointer;
             text-decoration: none;
-            box-shadow: 0 0 10px #00f, 0 0 20px #00f, 0 0 30px #0099ff;
-            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 20px rgba(139, 92, 246, 0.4);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            font-weight: 600;
         }
-        .cube-button:hover {
-            transform: scale(1.1);
-            box-shadow: 0 0 15px #00f, 0 0 25px #00f, 0 0 35px #0099ff;
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(139, 92, 246, 0.6);
+        }
+
+        .final-text {
+            font-size: 1.2em;
+            color: #d1d5db;
+            max-width: 650px;
+            line-height: 1.6;
+        }
+
+        .footer {
+            margin-top: 50px;
+            font-size: 0.9em;
+            color: #9ca3af;
+            padding: 12px 0;
         }
     </style>
 </head>
 <body>
     <h1>Cube-Pit</h1>
+    <div class="subtitle">Il mio primo gioco che ho pubblicato.</div>
+
     <div class="content">
-        <div>
-            <img src="1_immagine.png" alt="Immagine 1">
+        <div class="card">
+            <img src="1_immagine.png" alt="Gameplay Cube-Pit">
+            <div class="card-desc">Affronta livelli pieni di ostacoli cubici e un'estetica mozzafiato.</div>
         </div>
-        <div>
-            <img src="2_immagine.png" alt="Immagine 2">
+        <div class="card">
+            <img src="2_immagine.png" alt="Cube-Pit Powerup">
+            <div class="card-desc">Raccogli power-up e supera i tuoi limiti con stile.</div>
         </div>
     </div>
-    <a href="https://gamejolt.com/games/Cube-Pit/852071" class="cube-button">Link del Gioco</a>
-    <div class="falling-cubes" id="fallingCubes"></div>
-    <script>
-        function createCube() {
-            const cube = document.createElement('div');
-            cube.classList.add('cube');
-            cube.style.left = Math.random() * 100 + 'vw';
-            cube.style.animationDuration = Math.random() * 5 + 5 + 's';
-            document.getElementById('fallingCubes').appendChild(cube);
-            setTimeout(() => {
-                cube.remove();
-            }, 10000);
-        }
-        setInterval(createCube, 500);
-    </script>
-</body>
+
+    <a href="https://gamejolt.com/games/Cube-Pit/852071" class="cta-button">Gioca Ora su GameJolt</a>
+    
+    <div class="final-text">
+        <strong>Cube-Pit</strong> è un arcade frenetico dove ogni salto è una sfida.<br>
+        Preparati a tuffarti in un'arena di cubi, tra effetti grafici moderni e adrenalina pura!
+    </div>
+    
+    <footer class="footer">
+        Creato da Manuel Causo;
+    </footer>
+
+    </body>
 </html>

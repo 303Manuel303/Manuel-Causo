@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ombre Silenziose - Sito Ufficiale</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --dark-bg: #111111;
+            --main-text: #e0e0e0;
+            --accent-color: #FFD700; /* Oro/Giallo */
+        }
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--dark-bg);
+            color: var(--main-text);
+            scroll-behavior: smooth;
+        }
+
+        /* Effetti di animazione per l'ingresso delle sezioni */
+        .reveal-element {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Animazione per i pulsanti */
+        .animated-btn {
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+            transition: color 0.4s ease-in-out;
+        }
+        .animated-btn::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--accent-color);
+            z-index: -1;
+            transform: translateY(100%);
+            transition: transform 0.4s ease-in-out;
+        }
+        .animated-btn:hover::before {
+            transform: translateY(0);
+        }
+
+        /* Stile del carosello */
+        .carousel-container {
+            position: relative;
+            overflow: hidden;
+        }
+        .carousel-slide {
+            display: none;
+            width: 100%;
+            transition: opacity 0.5s ease-in-out;
+            opacity: 0;
+        }
+        .carousel-slide:hover {
+            display: none;
+            width: 100%;
+            transition: opacity 0.5s ease-in-out;
+            opacity: 0;
+        }
+        .carousel-slide.active {
+            border: 3px solid #FFD700;
+            display: block;
+            opacity: 1;
+        }
+
+        @font-face {
+            font-family: 'Gamer';
+            src: url('Gamer.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        .GamerTitle {
+            font-family: 'Gamer';
+            --tw-text-opacity: 1;
+            color: #FFD700; 
+            line-height: 1;
+            font-size: 6rem;
+            text-shadow: 0px -5px #af9500;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        @keyframes rotazione {
+            0% { transform: rotate(2.5deg); }
+            50% { transform: rotate(-2.5deg); }
+            100% { transform: rotate(2.5deg); }
+        }
+
+        @keyframes shake {
+            0% { transform: translateX(-8px); }
+            50% { transform: translateX( 8px); }
+            100% { transform: translateX(-8px); }
+        }
+
+        .animated-pulse {
+            animation: pulse 3s infinite ease-in-out;
+        }
+
+        .animated-rotazione {
+            animation: rotazione 4s infinite ease-in-out;
+        }
+
+        .animated-shake {
+            animation: shake 2s infinite ease-in-out;
+        }
+
+        .titoloBarra {
+            font-family: 'Gamer';
+            color: #FFD700;
+            border: 2px solid #FFD700;
+            padding: 10px;
+            font-size: 2rem;
+            line-height: 1.5rem;
+            box-shadow: -5px -5px 0px 1px #e7c500;
+        }
+
+        .ContornoFinito{
+            border-style: solid;
+            border: 2px solid #FFD700;
+        }
+        .ContornoInCorso {
+            border-style: solid;
+            border: 2px solid #ff7300;
+        }
+        .ContornoDaFare {
+            border-style: solid;
+            border: 2px solid #ff0000;
+        }
+
+        .NomeSviluppatore {
+            font-family: 'Gamer';
+            font-size: 4.25rem;
+        }   
+
+        @keyframes gradientMove {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100%{
+                background-position: 0% 50%;
+            }
+        }
+            
+        h4.programmatore {
+            background: linear-gradient(270deg, #00ff37, #00ff80, #1e6900);
+            background-size: 600% 600%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradientMove 6s ease infinite;
+            text-shadow: 0px -4px #00a62458
+        }
+        /* SCRITTA GRAFICO */
+        .ante {
+            background: linear-gradient(270deg,
+                #00c9ff,
+                #92fe9d,
+                #fcb045,
+                #fd1d1d,
+                #833ab4,
+                #00c9ff);
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradientMove 6s ease infinite;
+        }
+        .ante::before {
+            content: attr(data-text);
+            position: absolute;
+            z-index: -1;
+            color: rgb(0, 0, 0); /* Ombra nera semi-trasparente */
+            text-shadow: -4px 0px rgb(24, 24, 24);
+        }
+
+
+        
+        /* SCRITTA AUDIO PROGRAMMER MATTIA*/
+        .matt {
+            text-shadow: 4px 0px #4a0098;
+            display: inline-flex;
+            color: #6a00db;
+        }
+
+        .let1 {
+            animation: Let1 1s infinite ease-in-out;
+        }
+        @keyframes Let1 {
+            0% {
+                transform: translateY(0);
+            }
+            14% {
+                transform: translateY(-5px);
+            }
+            28% {
+                transform: translateY(0);
+            }
+            42% {
+                transform: translateY(0);
+            }
+            76% {
+                transform: translateY(0);
+            }
+            90% {
+                transform: translateY(0);
+            }
+            100% {
+                transform: translateY(0);
+            }
+        }
+        .let2 {
+            animation: Let2 1s infinite ease-in-out;
+        }
+        @keyframes Let2 {
+            0% {
+                transform: translateY(0);
+            }
+            14% {
+                transform: translateY(0);
+            }
+            28% {
+                transform: translateY(-5px);
+            }
+            42% {
+                transform: translateY(0);
+            }
+            76% {
+                transform: translateY(0);
+            }
+            90% {
+                transform: translateY(0);
+            }
+            100% {
+                transform: translateY(0);
+            }
+        }
+        .let3 {
+            animation: Let3 1s infinite ease-in-out;
+        }
+        @keyframes Let3 {
+            0% {
+                transform: translateY(0);
+            }
+            14% {
+                transform: translateY(0);
+            }
+            28% {
+                transform: translateY(0);
+            }
+            42% {
+                transform: translateY(-5px);
+            }
+            56% {
+                transform: translateY(0);
+            }
+            90% {
+                transform: translateY(0);
+            }
+            100% {
+                transform: translateY(0);
+            }
+        }
+        .let4 {
+            animation: Let4 1s infinite ease-in-out;
+        }
+        @keyframes Let4 {
+            0% {
+                transform: translateY(0);
+            }
+            14% {
+                transform: translateY(0);
+            }
+            28% {
+                transform: translateY(0);
+            }
+            42% {
+                transform: translateY(0);
+            }
+            56% {
+                transform: translateY(-5px);
+            }
+            70% {
+                transform: translateY(0);
+            }
+            84% , 100%{
+                transform: translateY(0);
+            }
+        }
+        .let5 {
+            animation: Let5 1s infinite ease-in-out;
+        }
+        @keyframes Let5 {
+            0% {
+                transform: translateY(0);
+            }
+            14% {
+                transform: translateY(0);
+            }
+            28% {
+                transform: translateY(0);
+            }
+            42% {
+                transform: translateY(0);
+            }
+            56% {
+                transform: translateY(0);
+            }
+            70% {
+                transform: translateY(-5px);
+            }
+            84% , 100% {
+                transform: translateY(0);
+            }
+        }
+
+        .ScritteBarra{
+            font-family: 'Gamer';
+            font-size: 3rem;
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Barra di navigazione fissa -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-black bg-opacity-70 backdrop-blur-sm shadow-lg">
+        <nav class="container mx-auto p-4 flex justify-between items-center">
+            <h1 class="tracking-wide titoloBarra">THE ENDER MANSION</h1>
+            <ul class="hidden md:flex space-x-6">
+                <li><a href="#descrizione" class="hover:text-yellow-400 transition duration-300 ScritteBarra">DESCRIZIONE</a></li>
+                <li><a href="#carousel" class="hover:text-yellow-400 transition duration-300 ScritteBarra">GALLERIA</a></li>
+                <li><a href="#sviluppatori" class="hover:text-yellow-400 transition duration-300 ScritteBarra">TEAM</a></li>
+                <li><a href="#roadmap" class="hover:text-yellow-400 transition duration-300 ScritteBarra">ROADMAP</a></li>
+                <li><a href="#download" class="hover:text-yellow-400 transition duration-300 ScritteBarra">DOWNLOAD</a></li>
+            </ul>
+            <div class="md:hidden">
+                <!-- Hamburger menu -->
+                <button id="menu-btn" class="text-white focus:outline-none">
+                    <i class="fa fa-bars text-xl"></i>
+                </button>
+            </div>
+        </nav>
+        <!-- Menu mobile -->
+        <div id="mobile-menu" class="hidden md:hidden absolute top-full left-0 right-0 bg-black bg-opacity-90">
+            <ul class="p-4 text-center space-y-4">
+                <li><a href="#descrizione" class="block p-2 hover:bg-gray-800 transition duration-300">Descrizione</a></li>
+                <li><a href="#carousel" class="block p-2 hover:bg-gray-800 transition duration-300">Galleria</a></li>
+                <li><a href="#sviluppatori" class="block p-2 hover:bg-gray-800 transition duration-300">Sviluppatori</a></li>
+                <li><a href="#roadmap" class="block p-2 hover:bg-gray-800 transition duration-300">Roadmap</a></li>
+                <li><a href="#download" class="block p-2 hover:bg-gray-800 transition duration-300">Download</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <main class="mt-16">
+        <!-- Sezione 1: Descrizione gioco -->
+        <section id="descrizione" class="relative min-h-screen flex items-center justify-center p-8 bg-cover bg-center" style="background-image: url(Originial.png);">
+            <div class="absolute inset-0 bg-black opacity-70"></div>
+            <div class="container mx-auto text-center relative z-10 reveal-element">
+                <h2 class="GamerTitle">THE ENDER MANSION</h2>
+                <p class="max-w-3xl mx-auto text-xl leading-relaxed">
+                    Benvenuto nel sito del gioco! Ma quale gioco? "The Ender Mansion" è un gioco d'avventura strutturate in delle stanze  generate proceduralmente di una magione. Il gioco ha piccoli elementi roguelite , platform con un po' di azione ed ambientazione fantasy,horror (tranquilli è poco horror) 
+                </p>
+                <a href="#download" class="mt-8 inline-block px-8 py-3 bg-yellow-500 text-black font-bold rounded-lg uppercase tracking-wider animated-btn hover:shadow-2xl">
+                    Scarica la Demo
+                </a>
+            </div>
+        </section>
+
+        <!-- Sezione 2: Carosello immagini -->
+        <section id="carousel" class="py-20 reveal-element">
+            <div class="container mx-auto px-4 text-center">
+                <h3 class="GamerTitle animated-pulse">GALLERIA</h3>
+                <div class="carousel-container relative w-full max-w-5xl mx-auto">
+                    <div class="carousel-track">
+                        <!-- Slide 1 -->
+                        <div class="carousel-slide active">
+                            <img src="Immagini/ScreenShot/screen1.png" alt="Scena di Gioco 1" class="w-full h-auto">
+                        </div>
+                        <!-- Slide 2 -->
+                        <div class="carousel-slide">
+                            <img src="Immagini/ScreenShot/screen2.png" alt="Scena di Gioco 2" class="w-full h-auto">
+                        </div>
+                        <!-- Slide 3 -->
+                        <div class="carousel-slide">
+                            <img src="Immagini/ScreenShot/screen3.png" alt="Scena di Gioco 3" class="w-full h-auto">
+                        </div>
+                        <!-- Slide 4 -->
+                        <div class="carousel-slide">
+                            <img src="Immagini/ScreenShot/screen4.png" alt="Scena di Gioco 4" class="w-full h-auto">
+                        </div>
+                        <!-- Slide 5 -->
+                        <div class="carousel-slide">
+                            <img src="Immagini/ScreenShot/screen5.png" alt="Scena di Gioco 4" class="w-full h-auto">
+                        </div>
+                    </div>
+                    <!-- Controlli del carosello -->
+                    <button id="carousel-prev" class="absolute top-1/2 left-4 -translate-y-1/2 bg-black bg-opacity-50 text-white p-3 rounded-full hover:bg-opacity-80 transition duration-300">
+                        <i class="fa fa-chevron-left"></i>
+                    </button>
+                    <button id="carousel-next" class="absolute top-1/2 right-4 -translate-y-1/2 bg-black bg-opacity-50 text-white p-3 rounded-full hover:bg-opacity-80 transition duration-300">
+                        <i class="fa fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sezione 3: Sviluppatori -->
+        <section id="sviluppatori" class="py-20 bg-black reveal-element">
+            <div class="container mx-auto px-4 text-center">
+                <h3 class="GamerTitle animated-rotazione">TEAM</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Sviluppatore 1 -->
+                    <div class="bg-gray-700 p-6 rounded-lg shadow-xl transform transition-transform duration-300 hover:scale-105">
+                        <img src="https://placehold.co/150x150/555555/EEEEEE?text=DEVE" alt="Sviluppatore 1" class="rounded-full mx-auto mb-4">
+                        <h4 class="NomeSviluppatore mb-2 ante" data-text="ANTE"char>ANTE</h4>
+                        <p class="text-yellow-400 mb-2">Artista 3D/2D</p>
+                        <p class="text-sm">Colui che ha il pennello 3D!.</p>
+                    </div>
+                    <!-- Sviluppatore 2 -->
+                    <div class="bg-gray-700 p-6 rounded-lg shadow-xl transform transition-transform duration-300 hover:scale-105">
+                        <img src="https://placehold.co/150x150/555555/EEEEEE?text=DEVE" alt="Sviluppatore 2" class="rounded-full mx-auto mb-4">
+                        <h4 id="animatedText" class="NomeSviluppatore mb-2 programmatore">ENDERPLAYER</h4>
+                        <p class="text-yellow-400 mb-2">Programmatore</p>
+                        <p class="text-sm">Ha creato.</p>
+                    </div>
+                    <!-- Sviluppatore 3 -->
+                    <div class="bg-gray-700 p-6 rounded-lg shadow-xl transform transition-transform duration-300 hover:scale-105">
+                        <img src="https://placehold.co/150x150/555555/EEEEEE?text=DEVE" alt="Sviluppatore 3" class="rounded-full mx-auto mb-4">
+                        <h4 class="NomeSviluppatore mb-2 matt" style="display: inline-flex; color: #6a00db; text-shadow: #4a0098;"><p class="let1">M</p>  <p class="let2">A</p>   <p class="let3">T</p>   <p class="let4">T</p></h4>
+                        <p class="text-yellow-400 mb-2">Audio programmer</p>
+                        <p class="text-sm">Ha creato gli ambienti agghiaccianti e gli enigmi contorti che mettono alla prova i giocatori.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sezione 4: Roadmap -->
+        <section id="roadmap" class="py-20 reveal-element">
+            <div class="container mx-auto px-4 text-center">
+                <h3 class="GamerTitle animated-shake">ROADMAP</h3>
+                <div class="relative max-w-3xl mx-auto">
+                    <div class="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gray-700"></div>
+                    <!-- Tappa 1 -->
+                    <div class="relative mb-8 p-6 bg-gray-700 text-left md:text-right md:pr-12 transform transition-transform duration-300 hover:scale-105 ContornoFinito">
+                        <div class="absolute left-0 md:left-auto md:right-0 top-1/2 transform -translate-y-1/2 -translate-x-1/2 md:translate-x-1/2 w-8 h-8 rounded-full flex items-center justify-center" style="background-color:#FFD700;">
+                            <i class="fa fa-check text-white text-lg"></i>
+                        </div>
+                        <h4 class="text-xl font-bold mb-2">DA PROGRAMMARE</h4>
+                        <p class="text-sm">DA PROGRAMMARE</p>
+                    </div>
+                    <!-- Tappa 2 -->
+                    <div class="relative mb-8 p-6 bg-gray-700 text-left md:pl-12 transform transition-transform duration-300 hover:scale-105 ContornoInCorso">
+                        <div class="absolute left-0 top-1/2 transform -translate-y-1/2 -translate-x-1/2 w-8 h-8 rounded-full flex items-center justify-center" style="background-color:#ff7300;">
+                             <i class="fa fa-hourglass-half text-white text-lg"></i>
+                        </div>
+                        <h4 class="text-xl font-bold mb-2">DA PROGRAMMARE</h4>
+                        <p class="text-sm">DA PROGRAMMARE</p>
+                    </div>
+                    <!-- Tappa 3 -->
+                    <div class="relative p-6 bg-gray-700 text-left md:text-right md:pr-12 transform transition-transform duration-300 hover:scale-105 ContornoDaFare">
+                        <div class="absolute left-0 md:left-auto md:right-0 top-1/2 transform -translate-y-1/2 -translate-x-1/2 md:translate-x-1/2 w-8 h-8 rounded-full flex items-center justify-center" style="background-color:#ff0000;">
+                            <i class="fa fa-lock text-white text-lg"></i>
+                        </div>
+                        <h4 class="text-xl font-bold mb-2">Lancio Completo del Gioco (Prossimamente)</h4>
+                        <p class="text-sm">DA PROGRAMMARE</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sezione 5: Download gioco -->
+        <section id="download" class="py-20 bg-black reveal-element">
+            <div class="container mx-auto px-4 text-center">
+                <h3 class="GamerTitle animated-pulse">SCARICA IL GIOCO</h3>
+                <p class="mb-8 max-w-2xl mx-auto">
+                    Pronto a immergerti nell'incubo? Scegli la tua piattaforma e preparati per l'esperienza più terrificante della tua vita.
+                </p>
+                <div class="flex flex-col md:flex-row justify-center items-center gap-6">
+                    <a href="#" class="w-full md:w-auto flex-1 px-12 py-4 bg-gray-700 text-white font-bold rounded-lg animated-btn flex items-center justify-center gap-2 transform transition-transform duration-300 hover:scale-105 hover:bg-gray-600">
+                        <i class="fa-brands fa-windows text-2xl"></i>
+                        <span>Download per PC</span>
+                    </a>
+                    <a href="#" class="w-full md:w-auto flex-1 px-12 py-4 bg-gray-700 text-white font-bold rounded-lg animated-btn flex items-center justify-center gap-2 transform transition-transform duration-300 hover:scale-105 hover:bg-gray-600">
+                        <i class="fa-brands fa-apple text-2xl"></i>
+                        <span>Download per Mac</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-black py-8 text-center text-gray-500 reveal-element">
+        <p>&copy; 2024 Ombre Silenziose. Tutti i diritti riservati.</p>
+        <div class="mt-4 space-x-4">
+            <a href="#" class="hover:text-yellow-400 transition duration-300"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="hover:text-yellow-400 transition duration-300"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="hover:text-yellow-400 transition duration-300"><i class="fab fa-instagram"></i></a>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Animazione on scroll per le sezioni
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('revealed');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('.reveal-element').forEach(section => {
+                observer.observe(section);
+            });
+
+            // Carosello Immagini
+            const slides = document.querySelectorAll('.carousel-slide');
+            const prevBtn = document.getElementById('carousel-prev');
+            const nextBtn = document.getElementById('carousel-next');
+            let currentSlide = 0;
+
+            function showSlide(index) {
+                slides.forEach(slide => slide.classList.remove('active'));
+                slides[index].classList.add('active');
+            }
+
+            prevBtn.addEventListener('click', () => {
+                currentSlide = (currentSlide > 0) ? currentSlide - 1 : slides.length - 1;
+                showSlide(currentSlide);
+            });
+
+            nextBtn.addEventListener('click', () => {
+                currentSlide = (currentSlide < slides.length - 1) ? currentSlide + 1 : 0;
+                showSlide(currentSlide);
+            });
+
+            // Avvia carosello automatico
+            setInterval(() => {
+                currentSlide = (currentSlide < slides.length - 1) ? currentSlide + 1 : 0;
+                showSlide(currentSlide);
+            }, 5000); // Cambia immagine ogni 5 secondi
+
+            // Menu Mobile
+            const menuBtn = document.getElementById('menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            menuBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+
+            // Chiudi il menu mobile quando si clicca un link
+            mobileMenu.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                });
+            });
+        });
+    
+        const originalText = "ENDERPLAYER";
+        const glitchChars = "!@#$%^&*()_+1234567890<>?/|";
+        const element = document.getElementById("animatedText");
+
+        function glitchOnce() {
+        const chars = originalText.split("");
+        const index = Math.floor(Math.random() * chars.length);
+        const randomChar = glitchChars[Math.floor(Math.random() * glitchChars.length)];
+
+        chars[index] = randomChar;
+        element.textContent = chars.join("");
+
+        setTimeout(() => {
+            element.textContent = originalText;
+        }, 150); // tempo prima di ripristinare
+        }
+
+        setInterval(glitchOnce, 500); // ogni mezzo secondo
+
+
+    </script>
+</body>
+</html>

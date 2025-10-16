@@ -112,6 +112,15 @@
         transform: translate(10px, -5px); /* Sposta a destra e in alto */
     }
 
+    #The_Ender_Mansion{
+      background-size: cover;
+      background-image: linear-gradient(to left, rgba(0, 0, 0, 0) 50%, rgba(51, 51, 51, 1) 85%), url(pages/The_Ender_Mansion/Screenshot_15-10-2025---31-49-17-384.png);
+    }
+    #The_Ender_Mansion:hover{
+      background-size: cover;
+      background-image: linear-gradient(to left, rgba(0, 0, 0, 0) 50%, rgb(218, 218, 218) 85%), url(pages/The_Ender_Mansion/Screenshot_15-10-2025---31-49-17-384.png);
+    }
+
     #progettoCube-Pit2{
       background-size: cover;
       background-image: linear-gradient(to left, rgba(0, 0, 0, 0) 50%, rgba(51, 51, 51, 1) 85%), url('https://m.gjcdn.net/game-header/1800/852071-crop0_125_1293_486-htkydkzk-v4.webp'); /* Cambia sfumatura, stessa immagine */
@@ -120,6 +129,7 @@
       background-size: cover;
       background-image: linear-gradient(to left, rgba(0, 0, 0, 0) 50%, rgb(218, 218, 218) 85%), url('https://m.gjcdn.net/game-header/1800/852071-crop0_125_1293_486-htkydkzk-v4.webp'); /* Cambia sfumatura, stessa immagine */
     }
+
     #progettoHouseGeneratorMinecraft{
       background-size: cover;
       background-image: linear-gradient(to left, rgba(0, 0, 0, 0) 50%, rgba(51, 51, 51, 1) 85%), url(pages/HouseGenerator/Mid.png);
@@ -128,13 +138,14 @@
       background-size: cover;
       background-image: linear-gradient(to left, rgba(0, 0, 0, 0) 50%, rgb(218, 218, 218) 85%), url(pages/HouseGenerator/Mid.png);
     }
+
     #progettoAnimeList{
       background-size: cover;
-      background-image: linear-gradient(to left, rgba(0, 0, 0, 0) 50%, rgba(51, 51, 51, 1) 85%), url('https://cdn.discordapp.com/attachments/1294061695257546895/1294064913433493535/image.png?ex=6709a75d&is=670855dd&hm=62b92fe5c3046bcc6cf1c20a8b552cb9f0c6d95f68f7c22c8e104998cde8653a&');
+      background-image: linear-gradient(to left, rgba(0, 0, 0, 0) 50%, rgba(51, 51, 51, 1) 85%), url(pages/AnimeList/AnimeListMainImage.png);
     }
     #progettoAnimeList:hover{
       background-size: cover;
-      background-image: linear-gradient(to left, rgba(0, 0, 0, 0) 50%, rgb(218, 218, 218) 85%), url('https://cdn.discordapp.com/attachments/1294061695257546895/1294064913433493535/image.png?ex=6709a75d&is=670855dd&hm=62b92fe5c3046bcc6cf1c20a8b552cb9f0c6d95f68f7c22c8e104998cde8653a&');
+      background-image: linear-gradient(to left, rgba(0, 0, 0, 0) 50%, rgb(218, 218, 218) 85%), url(pages/AnimeList/AnimeListMainImage.png);
     }
 
     #progettoBackRooms{
@@ -205,61 +216,73 @@
     </div>
     <div class="container">
         
-        <h2 style="text-align: center;">Siti</h2>
-        
-        <div style="text-align: center;">
-            <div class="calcolatrice-container">
-                
-                <a href="link_al_primo_sito" class="button">Sito 1</a>
-                <a href="link_al_secondo_sito" class="button">Sito 2</a>
-            </div>
+      <h2 style="text-align: center;">Siti</h2>
+      
+      <div style="text-align: center;">
+          <div class="calcolatrice-container">
+              
+              <a href="link_al_primo_sito" class="button">Sito 1</a>
+              <a href="link_al_secondo_sito" class="button">Sito 2</a>
+          </div>
+      </div>
+
+
+      <h2>Progetti:</h2>
+      
+      <input type="text" id="searchInput" class="search-bar" onkeyup="filterProjects()" placeholder="Cerca progetti...">
+      
+      <a href="pages/The_Ender_Mansion/index.html">
+        <div class="project" id="The_Ender_Mansion">
+            <h2>The Ender Mansion (TEM) </h2>
+            <span class="scrittatag">C#</span>
+            <span class="scrittatag">Wwise</span>
+            <span class="scrittatag">GitHub</span>
+            <span class="scrittatag">Web</span>
+            <span class="scrittatag">Unity</span>
+            <p><b>Gioco d'avventura (DOORS style). Arriva alla stanza numero mille nella magione infestata!</b></p>
         </div>
+      </a>
 
+      <a href="pages/CubePit/CubePit.html">
+        <div class="project" id="progettoCube-Pit2">
+            <h2>Cube-Pit 2</h2>
+            <span class="scrittatag">C#</span>
+            <span class="scrittatag">Multipalyer</span>
+            <span class="scrittatag">Unity</span>
+            <p><b>Gioco survival. Sopravvivi a tutti i costi nella fossa!</b></p>
+        </div>
+      </a>
 
-        <h2>Progetti:</h2>
-        
-        <input type="text" id="searchInput" class="search-bar" onkeyup="filterProjects()" placeholder="Cerca progetti...">
-        
-        <a href="pages/CubePit/CubePit.html">
-          <div class="project" id="progettoCube-Pit2">
-              <h2>Cube-Pit 2</h2>
+      <a href="pages/HouseGenerator/HouseGenerator.html">
+        <div class="project" id="progettoHouseGeneratorMinecraft">
+              <h2>House Generator Minecraft</h2>
               <span class="scrittatag">C#</span>
-              <span class="scrittatag">Multipalyer</span>
+              <span class="scrittatag">NBT File</span>
               <span class="scrittatag">Unity</span>
-              <p><b>Gioco survival. Sopravvivi a tutti i costi nella fossa!</b></p>
-          </div>
-        </a>
+              <span class="scrittatag">Minecraft</span>
+              <p><b style="text-shadow: 0 0 1px white;">Generatore di Case in stile bizarro con creazione di file NBT <br> della struttura da usare su Minecraft.</b></p>
+        </div>
+      </a>
 
-        <a href="pages/HouseGenerator/HouseGenerator.html">
-          <div class="project" id="progettoHouseGeneratorMinecraft">
-                <h2>House Generator Minecraft</h2>
-                <span class="scrittatag">C#</span>
-                <span class="scrittatag">NBT File</span>
-                <span class="scrittatag">Unity</span>
-                <span class="scrittatag">Minecraft</span>
-                <p><b style="text-shadow: 0 0 1px white;">Generatore di Case in stile bizarro con creazione di file NBT <br> della struttura da usare su Minecraft.</b></p>
-          </div>
-        </a>
+      <a href="">
+        <div class="project" id="progettoAnimeList">
+            <h2>Lista Cartoni</h2>
+            <span class="scrittatag">HTML</span>
+            <span class="scrittatag">SQL</span>
+            <span class="scrittatag">php</span>
+            <p><b style="text-shadow: 0 0 1px white;"> Un sito dall'estetica semplice dove tramite un database <br>e un file php si preleva una lista di serie a cartone.</b></p>
+        </div>
+      </a>
 
-        <a href="">
-          <div class="project" id="progettoAnimeList">
-              <h2>Lista Cartoni</h2>
-              <span class="scrittatag">HTML</span>
-              <span class="scrittatag">SQL</span>
-              <span class="scrittatag">php</span>
-              <p><b style="text-shadow: 0 0 1px white;"> Un sito dall'estetica semplice dove tramite un database <br>e un file php si preleva una lista di serie a cartone.</b></p>
-          </div>
-        </a>
-
-        <a href="">
-          <div class="project" id="progettoBackRooms">
-              <h2>BackRooms Game</h2>
-              <span class="scrittatag">C#</span>
-              <span class="scrittatag">Unity</span>
-              <span class="scrittatag">IA (behavior trees)</span>
-              <p><b style="text-shadow: 0 0 1px white;"> Gioco basato sulle BackRooms con obbiettivo raccogliere <br>i 5 cubi senza farsi prendere dal glich.</b></p>
-          </div>
-        </a>
+      <a href="">
+        <div class="project" id="progettoBackRooms">
+            <h2>BackRooms Game</h2>
+            <span class="scrittatag">C#</span>
+            <span class="scrittatag">Unity</span>
+            <span class="scrittatag">IA (behavior trees)</span>
+            <p><b style="text-shadow: 0 0 1px white;"> Gioco basato sulle BackRooms con obbiettivo raccogliere <br>i 5 cubi senza farsi prendere dal glich.</b></p>
+        </div>
+      </a>
 
     </div>
     
