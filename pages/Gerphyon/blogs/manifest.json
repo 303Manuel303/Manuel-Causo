@@ -1,0 +1,24 @@
+{
+  "blogs": [
+    {
+      "file": "benvenuto-nella-magione.md",
+      "title": "Benvenuto nella Magione",
+      "date": "2026-02-01",
+      "tags": [
+        "devlog",
+        "horror"
+      ],
+      "image": "./assets/img/slide2.png"
+    },
+    {
+      "file": "dietro-le-quinte-ia.md",
+      "title": "Dietro le quinte: l'IA",
+      "date": "2026-02-18",
+      "tags": [
+        "ai",
+        "gameplay"
+      ],
+      "image": "./assets/img/slide3.png"
+    }
+  ]
+}

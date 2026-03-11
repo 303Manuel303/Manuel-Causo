@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="theme-color" content="#0A0A0A"/>
+  <title>GERPHYON</title>
+  <link rel="stylesheet" href="./assets/css/styles.css"/>
+  <link rel="icon" href="./assets/img/Logo64x64.png" type="image/png"/>
+</head>
+<body>
+<header class="site-header">
+  <div class="container navbar" style="font-size: 40px; font-family: Gerphyon;">
+    <a class="brand" href="./index.html">
+      <img src="./assets/img/Logo64x64.png" alt="GERPHYON logo"/>
+      <span class="title">GERPHYON</span>
+    </a>
+    <nav>
+      <a href="./index.html">HOME</a>
+      <a href="./versions.html">CHANGELOG</a>
+      <a href="./blog.html">BLOG</a>
+      <a href="./credits.html">CREDITI</a>
+      <a class="cta" href="https://enderplayer303.itch.io/enderplayers-mansion">SCARICA</a>
+    </nav>
+  </div>
+</header>
+<section class="hero">
+  <div class="slideshow">
+    <div class="slide" style="background-image:url('./assets/img/slide1.png')"></div>
+  </div>
+  <div class="hero-overlay">
+    <h1 style="font-family: Gerphyon;">BENVENUTI NEL <span style="color:var(--accent)">GERPHYON</span></h1>
+    <p>Un arcade horror pulsante di adrenalina. Corridoi infiniti, Mostri dietro l'angolo,<nobr> e un'entità che ti osserva.</nobr></p>
+    <div style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap;">
+      <a class="cta" href="https://enderplayer303.itch.io/enderplayers-mansion">Scarica ora</a>
+    </div>
+  </div>
+  <script src="./assets/js/slideshow.js"></script>
+</section>
+<div class="cornice">
+</div>
+<section class="section" style="
+  background-image:url('./assets/img/Gatto.png');
+  background-size:150px;
+  background-position:100px;
+  background-repeat: no-repeat;
+  padding-top: 100px;
+  padding-bottom: 100px;
+  ">
+  
+  <div class="container">
+    <div class="cards">
+      <article class="card">
+        <h3>Friend</h3>
+        <p>I "FRIEND” sono i mostri del gioco: ognuno è davvero unico, sia nell’aspetto che nel modo in cui va affrontato. Qui non si combatte: i mostri vanno schivati. Ognuno presenta sfide diverse  
+        </p>
+      </article>
+      <article class="card">
+        <h3>Atmosfera</h3>
+        <p>Il gioco si svolge all’interno della magione più grande mai costruita, un luogo immenso e misterioso progettato per ospitare i FRIEND. Ogni ala della magione è un mondo a sé: puoi ritrovarti a passare da una semplice cucina a un’intera città incastonata tra le mura, da un parco divertimenti a un ospedale abbandonato…</p>
+      </article>
+      <article class="card">
+        <h3>Ripetibile [WIP]</h3>
+        <p>Il gioco è pensato per essere altamente ripetibile e rigiocabile. Oltre a una vasta gamma di achievement (vere e proprie sfide da completare), anche la generazione del mondo cambia a ogni partita, offrendo situazioni, percorsi e incontri sempre diversi.</p>
+      </article>
+    </div>
+  </div>
+</section>
+<section class="section alt">
+  <div class="container" style="display:grid; grid-template-columns:1.2fr .8fr; gap: 20px; align-items:center;">
+    <div>
+      
+      <h2><strong>Un’esperienza pionieristica in un genere tutto nuovo</strong></h2>
+
+      <p>
+      Questo titolo rappresenta uno dei <strong>primissimi esempi realmente giocabili</strong> di un genere ancora quasi inesplorato: 
+      un nuovo modo di vivere tensione, scoperta e imprevedibilità.  
+      Un genere nato da poche sperimentazioni, ma qui portato a un livello completamente nuovo, con una 
+      <strong>visione chiara</strong> e un gameplay costruito per sorprendere.
+      </p>
+
+      <p>
+      In questo nuovo genere non si tratta di combattere, ma di <strong>sopravvivere all’ignoto</strong>: ambienti che si 
+      trasformano davanti ai tuoi occhi, entità uniche che seguono regole proprie e situazioni sempre diverse che ti 
+      spingono ad andare oltre la prossima porta.  
+      Ogni incontro è una storia. Ogni stanza è un rischio. Ogni passo è una sorpresa.
+      </p>
+
+      <p>
+      Il risultato è un gioco che punta a definire gli standard di questo nuovo filone: 
+      <strong>dinamico, rigiocabile, imprevedibile</strong> e perfetto per chi cerca emozioni fresche, lontane dai 
+      generi tradizionali ormai saturi.
+      </p>
+
+      <p>
+      <strong>Non è solo un gioco: è l’inizio di qualcosa di nuovo.</strong><br>
+      E tu puoi essere tra i primi a viverlo.
+      </p>
+
+      <div class="divider"></div>
+    </div>
+    <div>
+      <div><img src="./assets/img/porta.png" alt="Genere placeholder" style="max-width:100%;"/></div>
+    </div>
+  </div>
+</section>
+<div class="cornice"></div>
+<footer class="site-footer" style="margin-top: 0px;">
+  <div class="container">
+    <div class="footer-links" style="padding-top: 10px;">
+      <!-- <a href="#" class="button">Privacy</a> -->
+      <a href="https://discord.gg/F6qgCj7XM7" class="discord">Unisciti al nostro Discord</a>
+    </div>
+    <p class="center" style="color:#888; margin-top:10px;">© <span id="year"></span> GERPHYON</p>
+  </div>
+</footer>
+<script src="./assets/js/main.js"></script>
+
+<script>if('serviceWorker' in navigator) { navigator.serviceWorker.register('./sw.js'); }</script>
+</body>
+</html>
