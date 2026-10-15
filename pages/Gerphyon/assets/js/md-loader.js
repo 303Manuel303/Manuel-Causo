@@ -2,18 +2,32 @@ export async function renderMarkdownInto(selector, mdUrl) {
   const container = document.querySelector(selector); if (!container) return;
   try {
     const res = await fetch(mdUrl); if (!res.ok) throw new Error('Impossibile caricare: ' + mdUrl);
-    const md = await res.text();
-    const html = md
-      .replace(/^###\s(.+)$/gm, '<h3>$1</h3>')
-      .replace(/^##\s(.+)$/gm, '<h2>$1</h2>')
-      .replace(/^#\s(.+)$/gm, '<h1>$1</h1>')
-      .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
-      .replace(/\*(.+?)\*/g, '<em>$1</em>')
-      .replace(/^\-\s(.+)$/gm, '<li>$1</li>')
-      .replace(/(<li>.*<\/li>)/gs, '<ul>$1</ul>')
-      .replace(/\n\n/g, '<br/><br/>' );
-    container.innerHTML = html;
+    container.innerHTML = markdownToHtml(await res.text());
   } catch(err) {
     container.innerHTML = `<div class="card">Errore nel caricamento del contenuto: ${err.message}</div>`;
   }
+}
+
+function inline(s) {
+  return s
+    .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+    .replace(/\*(.+?)\*/g, '<em>$1</em>');
+}
+
+// Markdown minimale: titoli, liste (raggruppate) e paragrafi
+export function markdownToHtml(md) {
+  const out = []; let list = null; let para = [];
+  const flushPara = () => { if (para.length) { out.push(`<p>${inline(para.join('<br/>'))}</p>`); para = []; } };
+  const flushList = () => { if (list) { out.push(`<ul>${list.join('')}</ul>`); list = null; } };
+  for (const raw of md.replace(/\r/g, '').split('\n')) {
+    const line = raw.trimEnd();
+    const h = line.match(/^(#{1,3})\s+(.+)$/);
+    const li = line.match(/^\s*-\s(.+)$/);
+    if (h) { flushPara(); flushList(); const n = h[1].length; out.push(`<h${n}>${inline(h[2])}</h${n}>`); }
+    else if (li) { flushPara(); (list ||= []).push(`<li>${inline(li[1])}</li>`); }
+    else if (!line.trim()) { flushPara(); flushList(); }
+    else { flushList(); para.push(line); }
+  }
+  flushPara(); flushList();
+  return out.join('\n');
 }

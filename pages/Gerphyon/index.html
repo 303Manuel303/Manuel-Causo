@@ -3,115 +3,150 @@
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="theme-color" content="#0A0A0A"/>
+  <meta name="theme-color" content="#0b0807"/>
+  <meta name="description" content="GERPHYON — Survival-Horror voxel con elementi Dungeon Crawler e platform: esplora in prima persona una Magione enorme piena di Mostri e misteri."/>
   <title>GERPHYON</title>
+  <script>document.documentElement.classList.add('js')</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;600&display=swap"/>
+  <link rel="preload" href="./assets/fonts/GERPHYON.ttf" as="font" type="font/ttf" crossorigin/>
   <link rel="stylesheet" href="./assets/css/styles.css"/>
   <link rel="icon" href="./assets/img/Logo64x64.png" type="image/png"/>
 </head>
 <body>
+<a class="skip-link" href="#main">Salta al contenuto</a>
 <header class="site-header">
-  <div class="container navbar" style="font-size: 40px; font-family: Gerphyon;">
-    <a class="brand" href="./index.html">
-      <img src="./assets/img/Logo64x64.png" alt="GERPHYON logo"/>
-      <span class="title">GERPHYON</span>
+  <div class="container navbar">
+    <a class="brand" href="./index.html" aria-label="GERPHYON — Home">
+      <img src="./assets/img/Logo64x64.png" alt="" width="64" height="64"/>
+      <span class="brand-title">GERPHYON</span>
     </a>
-    <nav>
-      <a href="./index.html">HOME</a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Apri menu"><span></span></button>
+    <nav id="site-nav" class="site-nav" aria-label="Principale">
+      <a href="./index.html" aria-current="page">HOME</a>
       <a href="./versions.html">CHANGELOG</a>
       <a href="./blog.html">BLOG</a>
       <a href="./credits.html">CREDITI</a>
-      <a class="cta" href="https://enderplayer303.itch.io/enderplayers-mansion">SCARICA</a>
+      <a class="btn btn-sm" href="https://store.steampowered.com/app/4841430/GERPHYON_The_Ender_Mansion/" target="_blank" rel="noopener">WISHLIST</a>
     </nav>
   </div>
 </header>
+
+<main id="main">
 <section class="hero">
-  <div class="slideshow">
+  <div class="slideshow" aria-hidden="true">
     <div class="slide" style="background-image:url('./assets/img/slide1.png')"></div>
   </div>
-  <div class="hero-overlay">
-    <h1 style="font-family: Gerphyon;">BENVENUTI NEL <span style="color:var(--accent)">GERPHYON</span></h1>
-    <p>Un arcade horror pulsante di adrenalina. Corridoi infiniti, Mostri dietro l'angolo,<nobr> e un'entità che ti osserva.</nobr></p>
-    <div style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap;">
-      <a class="cta" href="https://enderplayer303.itch.io/enderplayers-mansion">Scarica ora</a>
+  <div class="hero-fx" aria-hidden="true"></div>
+  <div class="eyes" data-eyes="6" data-eyes-area="edges" aria-hidden="true"></div>
+  <div class="container hero-content">
+    <a class="hero-badge" href="./versions.html" data-latest-version hidden>ULTIMO AGGIORNAMENTO <b></b></a>
+    <h1 class="hero-title">
+      <span class="hero-title-small">BENVENUTI NEL</span>
+      <span class="hero-title-big">GERPHYON</span>
+    </h1>
+    <p class="hero-text">Un Survival-Horror voxel con elementi Dungeon Crawler e platform. Esplora in prima persona ambienti distopici in una Magione enorme, piena di Mostri e di misteri da scoprire!</p>
+    <div class="hero-actions">
+      <a class="btn btn-lg" href="https://store.steampowered.com/app/4841430/GERPHYON_The_Ender_Mansion/" target="_blank" rel="noopener">Wishlist su Steam</a>
+      <a class="btn btn-ghost" href="./versions.html">Changelog <span class="px-arrow" aria-hidden="true"></span></a>
     </div>
   </div>
+  <a class="scroll-hint" href="#magione" aria-label="Scorri alla magione"><span class="px-chev" aria-hidden="true"></span></a>
   <script src="./assets/js/slideshow.js"></script>
 </section>
-<div class="cornice">
-</div>
-<section class="section" style="
-  background-image:url('./assets/img/Gatto.png');
-  background-size:150px;
-  background-position:100px;
-  background-repeat: no-repeat;
-  padding-top: 100px;
-  padding-bottom: 100px;
-  ">
-  
+
+<div class="cornice" aria-hidden="true"></div>
+
+<section class="section section-grid" id="magione">
   <div class="container">
+    <div class="section-head">
+      <div data-reveal>
+        <span class="kicker">La magione</span>
+        <h2 class="h2">Cosa ti <span class="gold">aspetta</span></h2>
+        <span class="carpet" aria-hidden="true"></span>
+      </div>
+      <img class="peek-cat" src="./assets/img/Gatto.png" alt="" width="334" height="572"/>
+    </div>
     <div class="cards">
-      <article class="card">
+      <article class="card feature-card" data-reveal>
+        <span class="card-num" aria-hidden="true">01</span>
         <h3>Friend</h3>
-        <p>I "FRIEND” sono i mostri del gioco: ognuno è davvero unico, sia nell’aspetto che nel modo in cui va affrontato. Qui non si combatte: i mostri vanno schivati. Ognuno presenta sfide diverse  
-        </p>
+        <p>I "FRIEND” sono i mostri del gioco: ognuno è davvero unico e ha un attacco tutto suo. Gli attacchi sono a 360°: possono modificare l’ambiente, attaccarti attraverso lo schermo, inquinarti di suoni o di disturbi nella visuale, costringerti a muoverti in un modo ben preciso… e molto altro. Qui non si combatte: si sopravvive!.</p>
       </article>
-      <article class="card">
-        <h3>Atmosfera</h3>
+      <article class="card feature-card" data-reveal style="--d:.1s">
+        <span class="card-num" aria-hidden="true">02</span>
+        <h3>Atmosfera (LE STANZE)</h3>
         <p>Il gioco si svolge all’interno della magione più grande mai costruita, un luogo immenso e misterioso progettato per ospitare i FRIEND. Ogni ala della magione è un mondo a sé: puoi ritrovarti a passare da una semplice cucina a un’intera città incastonata tra le mura, da un parco divertimenti a un ospedale abbandonato…</p>
       </article>
-      <article class="card">
-        <h3>Ripetibile [WIP]</h3>
-        <p>Il gioco è pensato per essere altamente ripetibile e rigiocabile. Oltre a una vasta gamma di achievement (vere e proprie sfide da completare), anche la generazione del mondo cambia a ogni partita, offrendo situazioni, percorsi e incontri sempre diversi.</p>
+      <article class="card feature-card" data-reveal style="--d:.2s">
+        <span class="card-num" aria-hidden="true">03</span>
+        <h3>Ripetibile <span class="tag">WIP</span></h3>
+        <p>Il gioco è pensato per essere altamente ripetibile e rigiocabile. Oltre a una vasta gamma di achievement (vere e proprie sfide da completare), anche la generazione del mondo cambia a ogni partita, offrendo situazioni, percorsi e incontri sempre diversi.Il gioco offre pure la possibilità di trovare collezzionabili unici e rivederli nel museo!</p>
       </article>
     </div>
   </div>
 </section>
-<section class="section alt">
-  <div class="container" style="display:grid; grid-template-columns:1.2fr .8fr; gap: 20px; align-items:center;">
-    <div>
-      
-      <h2><strong>Un’esperienza pionieristica in un genere tutto nuovo</strong></h2>
+
+<div class="cornice" aria-hidden="true"></div>
+
+<section class="section section-genre">
+  <div class="container genre-grid">
+    <div class="genre-text" data-reveal>
+      <span class="kicker">La storia</span>
+      <h2 class="h2">Una porta che si <span class="gold">chiude</span> alle tue spalle</h2>
+      <span class="carpet" aria-hidden="true"></span>
 
       <p>
-      Questo titolo rappresenta uno dei <strong>primissimi esempi realmente giocabili</strong> di un genere ancora quasi inesplorato: 
-      un nuovo modo di vivere tensione, scoperta e imprevedibilità.  
-      Un genere nato da poche sperimentazioni, ma qui portato a un livello completamente nuovo, con una 
-      <strong>visione chiara</strong> e un gameplay costruito per sorprendere.
+      Sei un ragazzino che una notte sente delle <strong>voci</strong> provenire da una magione abbandonata. Spinto dalla curiosità,
+      ti intrufoli dentro… ma appena varchi la soglia, <strong>la porta dietro di te si blocca</strong>.
+      Il panico sale, e l’unica scelta è andare avanti per trovare un’uscita.
       </p>
 
       <p>
-      In questo nuovo genere non si tratta di combattere, ma di <strong>sopravvivere all’ignoto</strong>: ambienti che si 
-      trasformano davanti ai tuoi occhi, entità uniche che seguono regole proprie e situazioni sempre diverse che ti 
-      spingono ad andare oltre la prossima porta.  
-      Ogni incontro è una storia. Ogni stanza è un rischio. Ogni passo è una sorpresa.
+      Lungo il cammino troverai i foglietti di <strong>Maxwell</strong>, un investigatore incaricato del
+      <strong>Caso 892</strong>: una serie di persone scomparse nel nulla. E secondo Maxwell, questa magione
+      c’entra qualcosa.
       </p>
 
       <p>
-      Il risultato è un gioco che punta a definire gli standard di questo nuovo filone: 
-      <strong>dinamico, rigiocabile, imprevedibile</strong> e perfetto per chi cerca emozioni fresche, lontane dai 
-      generi tradizionali ormai saturi.
+      A sbarrarti la strada ci sono i <strong>mostri</strong>: alcuni ostili, altri sorprendentemente amichevoli.
+      E proprio loro ti racconteranno qualcosa di molto strano…
       </p>
 
-      <p>
-      <strong>Non è solo un gioco: è l’inizio di qualcosa di nuovo.</strong><br>
-      E tu puoi essere tra i primi a viverlo.
+      <p class="callout">
+        <strong>“Questa è la nostra vita.”</strong>
+        <span>Cosa si nasconde davvero dentro la magione?</span>
       </p>
-
-      <div class="divider"></div>
     </div>
-    <div>
-      <div><img src="./assets/img/porta.png" alt="Genere placeholder" style="max-width:100%;"/></div>
-    </div>
+    <figure class="genre-door" data-reveal style="--d:.15s">
+      <img src="./assets/img/porta.png" alt="Una porta di legno che si apre su una luce dorata" width="688" height="786"/>
+      <figcaption>Oltre la prossima porta...</figcaption>
+    </figure>
   </div>
 </section>
-<div class="cornice"></div>
-<footer class="site-footer" style="margin-top: 0px;">
-  <div class="container">
-    <div class="footer-links" style="padding-top: 10px;">
-      <!-- <a href="#" class="button">Privacy</a> -->
-      <a href="https://discord.gg/F6qgCj7XM7" class="discord">Unisciti al nostro Discord</a>
-    </div>
-    <p class="center" style="color:#888; margin-top:10px;">© <span id="year"></span> GERPHYON</p>
+</main>
+
+<div class="cornice" aria-hidden="true"></div>
+<footer class="site-footer">
+  <div class="eyes" data-eyes="5" aria-hidden="true"></div>
+  <div class="container footer-inner">
+    <a class="footer-brand" href="./index.html" aria-label="GERPHYON — Home">
+      <img src="./assets/img/Logo64x64.png" alt="" width="64" height="64"/>
+      <span class="brand-title">GERPHYON</span>
+    </a>
+    <p class="footer-tagline">Qualcosa ti osserva.</p>
+    <nav class="footer-links" aria-label="Secondaria">
+      <a href="./index.html">Home</a>
+      <a href="./versions.html">Changelog</a>
+      <a href="./blog.html">Blog</a>
+      <a href="./credits.html">Crediti</a>
+    </nav>
+    <a href="https://discord.gg/F6qgCj7XM7" class="btn btn-blood discord">
+      <svg class="discord-icon" viewBox="0 0 8 8" aria-hidden="true" shape-rendering="crispEdges"><path fill="currentColor" fill-rule="evenodd" d="M1 1h6v1h1v3H7v1H4v1H3v1H2V6H1V5H0V2h1zM2 3v1h1V3zm3 0v1h1V3z"/></svg>
+      Unisciti al nostro Discord
+    </a>
+    <p class="copyright">© <span id="year"></span> GERPHYON</p>
   </div>
 </footer>
 <script src="./assets/js/main.js"></script>

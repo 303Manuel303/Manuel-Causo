@@ -3,75 +3,107 @@
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="theme-color" content="#0A0A0A"/>
-  <title>GERPHYON</title>
+  <meta name="theme-color" content="#0b0807"/>
+  <title>Crediti — GERPHYON</title>
+  <script>document.documentElement.classList.add('js')</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;600&display=swap"/>
+  <link rel="preload" href="./assets/fonts/GERPHYON.ttf" as="font" type="font/ttf" crossorigin/>
   <link rel="stylesheet" href="./assets/css/styles.css"/>
   <link rel="icon" href="./assets/img/Logo64x64.png" type="image/png"/>
-
 </head>
 <body>
+<a class="skip-link" href="#main">Salta al contenuto</a>
 <header class="site-header">
-  <div class="container navbar" style="font-size: 40px; font-family: Gerphyon;">
-    <a class="brand" href="./index.html">
-      <img src="./assets/img/Logo64x64.png" alt="GERPHYON logo"/>
-      <span class="title">GERPHYON</span>
+  <div class="container navbar">
+    <a class="brand" href="./index.html" aria-label="GERPHYON — Home">
+      <img src="./assets/img/Logo64x64.png" alt="" width="64" height="64"/>
+      <span class="brand-title">GERPHYON</span>
     </a>
-    <nav>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Apri menu"><span></span></button>
+    <nav id="site-nav" class="site-nav" aria-label="Principale">
       <a href="./index.html">HOME</a>
       <a href="./versions.html">CHANGELOG</a>
       <a href="./blog.html">BLOG</a>
-      <a href="./credits.html">CREDITI</a>
-      <a class="cta" href="https://enderplayer303.itch.io/enderplayers-mansion">SCARICA</a>
+      <a href="./credits.html" aria-current="page">CREDITI</a>
+      <a class="btn btn-sm" href="https://store.steampowered.com/app/4841430/GERPHYON_The_Ender_Mansion/" target="_blank" rel="noopener">WISHLIST</a>
     </nav>
   </div>
 </header>
+
+<main id="main">
 <section class="page-hero">
+  <div class="eyes" data-eyes="3" data-eyes-area="right" aria-hidden="true"></div>
   <div class="container">
-    <h1 class="fontBase70">Crediti</h1>
+    <span class="kicker">Dietro le quinte</span>
+    <h1>Crediti</h1>
     <p>Grazie a tutte le persone che rendono possibile GERPHYON.</p>
   </div>
 </section>
-<div class="cornice">
-</div>
-<section class="section">
-  <div class="container">
-    <div class="card credit-section">
-      <h2>Team Principale</h2>
-      <ul class="credit-list" id="team-main">
-        <li><strong>EnderPlayer303</strong> — Tecnico</li>
-        <li><strong>AnTe</strong> — Artista</li>
+<div class="cornice" aria-hidden="true"></div>
+<section class="section section-grid">
+  <div class="container credits-grid">
+    <div class="core-team wide" data-reveal>
+      <span class="kicker">I creatori</span>
+      <h2 class="h2">Team <span class="gold">Principale</span></h2>
+      <span class="carpet" aria-hidden="true"></span>
+      <ul class="core-list" id="team-main">
+        <li class="core-member">
+          <span class="core-role tag tag-gold">Tecnico</span>
+          <strong>EnderPlayer303</strong>
+        </li>
+        <li class="core-member" style="--d:.1s">
+          <span class="core-role tag tag-gold">Artista</span>
+          <strong>AnTe</strong>
+        </li>
       </ul>
     </div>
-    <div class="card credit-section">
+    <div class="card credit-section" data-reveal>
       <h2>Persone che hanno contribuito</h2>
       <p>Persone che hanno svolto lavoretti o erano nel team.</p>
-      <ul class="credit-list" id="Team Esterno">
-        <li><strong>Mattia Festa</strong> — Suond Designer</li>
+      <ul class="credit-list" id="team-esterno">
+        <li><strong>Mattia Festa</strong> <span class="tag tag-dark">Sound Designer</span></li>
       </ul>
     </div>
-    <div class="card credit-section">
+    <div class="card credit-section" data-reveal style="--d:.1s">
       <h2>Supporter</h2>
       <ul class="credit-list" id="supporters">
         <li><strong>GSF - Giocatori Senza Frontiere</strong></li>
       </ul>
     </div>
-    <div class="card credit-section">
+    <div class="card credit-section wide" data-reveal>
       <h2>Idee dalla Community</h2>
       <p>Persone che, attraverso commenti e canali, hanno dato idee che sono entrate nel gioco.</p>
-      <ul class="credit-list" id="community-ideas">
-        <li>Luck — <span class="idea">IDEA: nome del mostro situato nella citta' "PaleMan"</span></li>
-        <li>D4rk — <span class="idea">IDEA: Mostro da pagare altrimenti ti danneggia "mostro tra la 175-200"</span></li>
+      <ul class="credit-list ideas" id="community-ideas">
+        <li><strong>Luck</strong> <span class="idea"><span class="tag">Idea</span>nome del mostro situato nella citta' "PaleMan"</span></li>
+        <li><strong>D4rk</strong> <span class="idea"><span class="tag">Idea</span>Mostro da pagare altrimenti ti danneggia "mostro tra la 175-200"</span></li>
       </ul>
     </div>
   </div>
 </section>
-<footer class="site-footer" style="margin-top: 0px;">
-  <div class="container">
-    <div class="footer-links" style="padding-top: 10px;">
-      <!-- <a href="#" class="button">Privacy</a> -->
-      <a href="https://discord.gg/F6qgCj7XM7" class="discord">Unisciti al nostro Discord</a>
-    </div>
-    <p class="center" style="color:#888; margin-top:10px;">© <span id="year"></span> GERPHYON</p>
+</main>
+
+<div class="cornice" aria-hidden="true"></div>
+<footer class="site-footer">
+  <div class="eyes" data-eyes="5" aria-hidden="true"></div>
+  <div class="container footer-inner">
+    <a class="footer-brand" href="./index.html" aria-label="GERPHYON — Home">
+      <img src="./assets/img/Logo64x64.png" alt="" width="64" height="64"/>
+      <span class="brand-title">GERPHYON</span>
+    </a>
+    <p class="footer-tagline">Qualcosa ti osserva.</p>
+    <nav class="footer-links" aria-label="Secondaria">
+      <a href="./index.html">Home</a>
+      <a href="./versions.html">Changelog</a>
+      <a href="./blog.html">Blog</a>
+      <a href="./credits.html">Crediti</a>
+    </nav>
+    <a href="https://discord.gg/F6qgCj7XM7" class="btn btn-blood discord">
+      <svg class="discord-icon" viewBox="0 0 8 8" aria-hidden="true" shape-rendering="crispEdges"><path fill="currentColor" fill-rule="evenodd" d="M1 1h6v1h1v3H7v1H4v1H3v1H2V6H1V5H0V2h1zM2 3v1h1V3zm3 0v1h1V3z"/></svg>
+      Unisciti al nostro Discord
+    </a>
+    <p class="copyright">© <span id="year"></span> GERPHYON</p>
   </div>
 </footer>
 <script src="./assets/js/main.js"></script>
