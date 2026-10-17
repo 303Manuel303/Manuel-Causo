@@ -1,888 +1,156 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Manuel Causo — Developer Portfolio</title>
-  <meta name="description" content="Portfolio di Manuel Causo, developer: videogiochi e tool in C# e Unity, progetti web, competenze, formazione e certificazioni.">
-  <meta name="author" content="Manuel Causo">
-  <meta name="theme-color" content="#09090b">
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="Manuel Causo — Developer Portfolio">
-  <meta property="og:description" content="Videogiochi e tool in C# e Unity, progetti web, competenze e certificazioni.">
-  <meta property="og:url" content="https://303manuel303.github.io/Manuel-Causo/">
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23ffd43b'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial,sans-serif' font-weight='700' font-size='26' fill='%23111'%3EMC%3C/text%3E%3C/svg%3E">
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/devicon@2.16.0/devicon.min.css">
-
-  <script>document.documentElement.classList.add('js');</script>
-
-  <style>
-    :root {
-      color-scheme: dark;
-      --bg: #09090b;
-      --text: #f5f5f4;
-      --muted: #a8a29e;
-      --faint: #78716c;
-      --yellow: #ffd43b;
-      --yellow-2: #fab005;
-      --yellow-light: #fff3bf;
-      --yellow-soft: rgba(255, 212, 59, .13);
-      --yellow-line: rgba(255, 212, 59, .35);
-      --glass: linear-gradient(145deg, rgba(255, 255, 255, .085), rgba(255, 255, 255, .03));
-      --tile: rgba(255, 255, 255, .04);
-      --border: rgba(255, 255, 255, .11);
-      --shadow: 0 24px 60px -24px rgba(0, 0, 0, .7);
-      --blur: blur(18px) saturate(150%);
-      --radius: 24px;
-      --radius-sm: 16px;
-      --maxw: 1160px;
-      --font: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
-      --font-display: 'Space Grotesk', 'Inter', system-ui, sans-serif;
-      --font-mono: 'JetBrains Mono', ui-monospace, 'Cascadia Code', Consolas, monospace;
-    }
-
-    *, *::before, *::after { box-sizing: border-box; }
-    html { scroll-behavior: smooth; scroll-padding-top: 96px; }
-    body {
-      margin: 0;
-      background: var(--bg);
-      color: var(--text);
-      font-family: var(--font);
-      line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
-      overflow-x: clip;
-    }
-    img { max-width: 100%; display: block; }
-    a { color: inherit; text-decoration: none; }
-    button { font: inherit; color: inherit; }
-    ::selection { background: var(--yellow); color: #111; }
-    :focus-visible { outline: 2px solid var(--yellow); outline-offset: 3px; border-radius: 8px; }
-
-    /* ---------- Sfondo ---------- */
-    .bg { position: fixed; inset: 0; z-index: -1; overflow: hidden; pointer-events: none; }
-    .blob { position: absolute; border-radius: 50%; filter: blur(90px); animation: float 24s ease-in-out infinite alternate; }
-    .b1 { width: 560px; height: 560px; background: var(--yellow); top: -200px; left: -160px; opacity: .26; }
-    .b2 { width: 460px; height: 460px; background: #f59f00; top: 38%; right: -180px; opacity: .2; animation-duration: 30s; }
-    .b3 { width: 420px; height: 420px; background: var(--yellow-light); bottom: -200px; left: 28%; opacity: .1; animation-duration: 34s; }
-    .grid-lines {
-      position: absolute; inset: 0;
-      background-image:
-        linear-gradient(rgba(255, 255, 255, .035) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 255, 255, .035) 1px, transparent 1px);
-      background-size: 56px 56px;
-      -webkit-mask-image: radial-gradient(ellipse at 50% 0%, #000 25%, transparent 75%);
-      mask-image: radial-gradient(ellipse at 50% 0%, #000 25%, transparent 75%);
-    }
-    @keyframes float { to { transform: translate3d(70px, 50px, 0) scale(1.1); } }
-
-    /* ---------- Vetro ---------- */
-    .glass {
-      background: var(--glass);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow), inset 0 1px 0 rgba(255, 255, 255, .07);
-      -webkit-backdrop-filter: var(--blur);
-      backdrop-filter: var(--blur);
-    }
-    @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
-      .glass { background: rgba(24, 24, 27, .94); }
-    }
-    .spot { position: relative; isolation: isolate; }
-    .spot::after {
-      content: ""; position: absolute; inset: 0; z-index: -1; border-radius: inherit; pointer-events: none;
-      background: radial-gradient(420px circle at var(--mx, 50%) var(--my, 50%), rgba(255, 212, 59, .11), transparent 45%);
-      opacity: 0; transition: opacity .3s;
-    }
-    .spot:hover::after { opacity: 1; }
-
-    /* ---------- Navbar ---------- */
-    .nav {
-      position: fixed; top: 16px; left: 50%; transform: translateX(-50%); z-index: 50;
-      width: min(var(--maxw), calc(100% - 32px));
-      display: flex; align-items: center; justify-content: space-between; gap: 12px;
-      padding: 8px 8px 8px 16px; border-radius: 999px;
-      transition: background .3s, box-shadow .3s;
-    }
-    .nav.scrolled { background: linear-gradient(145deg, rgba(30, 30, 34, .75), rgba(20, 20, 24, .6)); }
-    .logo { display: flex; align-items: center; gap: 10px; font-family: var(--font-display); font-weight: 700; letter-spacing: -.01em; }
-    .logo-mark {
-      width: 34px; height: 34px; border-radius: 11px; display: grid; place-items: center;
-      background: linear-gradient(135deg, var(--yellow), var(--yellow-2)); color: #111; font-size: .85rem;
-      box-shadow: 0 6px 18px -6px rgba(255, 212, 59, .7);
-    }
-    .nav-links { display: flex; gap: 2px; list-style: none; margin: 0; padding: 0; }
-    .nav-links a {
-      display: block; padding: 8px 14px; border-radius: 999px; color: var(--muted);
-      font-size: .9rem; font-weight: 500; transition: color .2s, background .2s;
-    }
-    .nav-links a:hover { color: var(--text); background: rgba(255, 255, 255, .07); }
-    .nav-links a.active { color: var(--yellow); background: var(--yellow-soft); }
-    .nav-toggle {
-      display: none; width: 42px; height: 42px; border-radius: 50%; border: 1px solid var(--border);
-      background: rgba(255, 255, 255, .06); cursor: pointer; place-items: center; font-size: 1rem;
-    }
-
-    /* ---------- Bottoni ---------- */
-    .btn {
-      display: inline-flex; align-items: center; justify-content: center; gap: 10px;
-      padding: 12px 22px; border-radius: 999px; font-weight: 600; font-size: .95rem;
-      border: 1px solid transparent; cursor: pointer;
-      transition: transform .2s, box-shadow .2s, background .2s, border-color .2s;
-    }
-    .btn-primary {
-      background: linear-gradient(135deg, var(--yellow), var(--yellow-2)); color: #111;
-      box-shadow: 0 10px 30px -10px rgba(255, 212, 59, .6);
-    }
-    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 16px 36px -10px rgba(255, 212, 59, .8); }
-    .btn-glass { background: rgba(255, 255, 255, .06); border-color: var(--border); -webkit-backdrop-filter: var(--blur); backdrop-filter: var(--blur); }
-    .btn-glass:hover { transform: translateY(-2px); border-color: var(--yellow-line); background: rgba(255, 255, 255, .1); }
-    .btn-sm { padding: 9px 16px; font-size: .88rem; }
-
-    /* ---------- Layout ---------- */
-    .wrap { width: min(var(--maxw), calc(100% - 32px)); margin: 0 auto; }
-    .section { padding-top: 120px; }
-    .sec-head { margin-bottom: 36px; }
-    .sec-kicker { font-family: var(--font-mono); color: var(--yellow); font-size: .82rem; letter-spacing: .1em; text-transform: uppercase; }
-    .sec-title { font-family: var(--font-display); font-size: clamp(2rem, 4.6vw, 3.1rem); letter-spacing: -.025em; line-height: 1.08; margin: 8px 0 12px; }
-    .sec-sub { color: var(--muted); max-width: 62ch; margin: 0; }
-
-    /* ---------- Hero ---------- */
-    .hero {
-      min-height: 100vh; min-height: 100svh;
-      display: grid; grid-template-columns: 1.15fr .85fr; align-items: center; gap: 56px;
-      padding: 120px 0 48px;
-    }
-    .hero > * { min-width: 0; }
-    .pill {
-      display: inline-flex; align-items: center; gap: 10px; padding: 6px 14px 6px 10px;
-      border-radius: 999px; font-size: .85rem; color: var(--muted); box-shadow: none;
-    }
-    .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--yellow); box-shadow: 0 0 0 4px rgba(255, 212, 59, .18); animation: pulse 2s ease-in-out infinite; }
-    @keyframes pulse { 50% { box-shadow: 0 0 0 7px rgba(255, 212, 59, .05); } }
-    .hero-title { font-family: var(--font-display); font-size: clamp(2.9rem, 7.4vw, 5.4rem); line-height: .98; letter-spacing: -.035em; margin: 22px 0 12px; }
-    .grad { background: linear-gradient(120deg, var(--yellow-light), var(--yellow) 40%, var(--yellow-2)); -webkit-background-clip: text; background-clip: text; color: transparent; }
-    .hero-role { font-family: var(--font-display); font-size: clamp(1.15rem, 2.4vw, 1.55rem); color: var(--text); margin: 0 0 14px; font-weight: 500; }
-    .hero-role span { color: var(--faint); }
-    .hero-lead { color: var(--muted); max-width: 54ch; font-size: 1.05rem; margin: 0; }
-    .code {
-      font-family: var(--font-mono); font-size: .9rem; padding: 14px 18px; margin: 26px 0;
-      border-radius: var(--radius-sm); overflow-x: auto; white-space: nowrap; box-shadow: none;
-    }
-    :is(.code, .editor) .ty { color: var(--yellow); }
-    :is(.code, .editor) .kw { color: var(--yellow-2); }
-    :is(.code, .editor) .va { color: var(--text); }
-    :is(.code, .editor) .st { color: var(--yellow-light); }
-    :is(.code, .editor) .pu { color: var(--faint); }
-    :is(.code, .editor) .cm { color: #8a8f98; }
-    .editor .fn { color: #ffe8a3; }
-    .caret { display: inline-block; width: .55em; height: 1.1em; margin-left: 2px; vertical-align: -.2em; background: var(--yellow); animation: blink 1s steps(1) infinite; }
-    @keyframes blink { 50% { opacity: 0; } }
-    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; }
-    .socials { display: flex; gap: 10px; margin-top: 26px; }
-    .social {
-      width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center;
-      background: rgba(255, 255, 255, .05); border: 1px solid var(--border); color: var(--muted);
-      transition: color .2s, border-color .2s, transform .2s, background .2s;
-    }
-    .social:hover { color: #111; background: var(--yellow); border-color: transparent; transform: translateY(-3px); }
-
-    .hero-visual { position: relative; justify-self: center; width: min(400px, 100%); }
-    .hero-visual::before { content: ""; position: absolute; inset: 15%; border-radius: 50%; background: var(--yellow); filter: blur(70px); opacity: .18; z-index: -1; }
-    .editor { overflow: hidden; border-radius: 22px; }
-    .editor-bar { display: flex; align-items: center; gap: 14px; padding: 12px 16px; border-bottom: 1px solid var(--border); background: rgba(255, 255, 255, .03); }
-    .editor-dots { display: flex; gap: 6px; }
-    .editor-dots i { width: 10px; height: 10px; border-radius: 50%; background: rgba(255, 255, 255, .16); }
-    .editor-dots i:first-child { background: var(--yellow); }
-    .editor-file { display: flex; align-items: center; gap: 7px; font-family: var(--font-mono); font-size: .78rem; color: var(--muted); }
-    .editor-code { padding: 18px 18px 18px 0; font-family: var(--font-mono); font-size: .8rem; line-height: 1.8; counter-reset: ln; overflow-x: auto; }
-    .editor-code .ln { display: block; white-space: pre; counter-increment: ln; }
-    .editor-code .ln::before { content: counter(ln); display: inline-block; width: 3em; padding-right: 1.2em; text-align: right; color: var(--faint); opacity: .55; }
-    .editor-foot { display: flex; align-items: center; gap: 10px; padding: 12px 16px; border-top: 1px solid var(--border); font-family: var(--font-mono); font-size: .76rem; color: var(--muted); }
-    .float-chip {
-      position: absolute; display: flex; align-items: center; gap: 8px; padding: 9px 14px;
-      border-radius: 14px; font-family: var(--font-mono); font-size: .82rem; font-weight: 600;
-      animation: bob 6s ease-in-out infinite;
-    }
-    .float-chip i { font-size: 1.15rem; }
-    .fc1 { top: 10%; left: -48px; }
-    .fc2 { top: 46%; right: -44px; animation-delay: -2s; }
-    .fc3 { bottom: 16%; left: -34px; animation-delay: -4s; }
-    @keyframes bob { 50% { transform: translateY(-10px); } }
-
-    /* ---------- Tag ---------- */
-    .tags { display: flex; flex-wrap: wrap; gap: 6px; }
-    .tag {
-      font-family: var(--font-mono); font-size: .74rem; padding: 4px 10px; border-radius: 999px;
-      background: var(--yellow-soft); color: #ffe8a3; border: 1px solid rgba(255, 212, 59, .22);
-    }
-
-    /* ---------- Chi sono ---------- */
-    .facts { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
-    .fact { padding: 20px; border-radius: 20px; display: flex; flex-direction: column; gap: 10px; }
-    .ic {
-      width: 42px; height: 42px; border-radius: 13px; display: grid; place-items: center; flex: none;
-      background: var(--yellow-soft); color: var(--yellow); font-size: 1.05rem; border: 1px solid rgba(255, 212, 59, .2);
-    }
-    .fact small { color: var(--muted); font-size: .8rem; display: block; }
-    .fact b { font-family: var(--font-display); font-size: 1.08rem; font-weight: 600; }
-
-    /* ---------- Progetti ---------- */
-    .toolbar { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin-bottom: 24px; }
-    .search { position: relative; flex: 1 1 280px; }
-    .search i { position: absolute; left: 18px; top: 50%; transform: translateY(-50%); z-index: 1; color: var(--faint); pointer-events: none; }
-    .search input {
-      width: 100%; padding: 14px 18px 14px 46px; border-radius: 999px; font: inherit; color: var(--text);
-      background: rgba(255, 255, 255, .05); border: 1px solid var(--border); outline: none;
-      -webkit-backdrop-filter: var(--blur); backdrop-filter: var(--blur); transition: border-color .2s, box-shadow .2s;
-    }
-    .search input::placeholder { color: var(--faint); }
-    .search input:focus { border-color: var(--yellow-line); box-shadow: 0 0 0 4px rgba(255, 212, 59, .12); }
-    .chips { display: flex; flex-wrap: wrap; gap: 8px; }
-    .chip {
-      padding: 9px 16px; border-radius: 999px; border: 1px solid var(--border); background: rgba(255, 255, 255, .05);
-      color: var(--muted); font-size: .86rem; font-weight: 500; cursor: pointer; transition: all .2s;
-    }
-    .chip:hover { color: var(--text); border-color: rgba(255, 255, 255, .25); }
-    .chip[aria-pressed="true"] { background: var(--yellow); color: #111; border-color: transparent; }
-    .count { font-family: var(--font-mono); font-size: .8rem; color: var(--faint); margin-left: auto; }
-
-    .projects { display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px; }
-    .project { display: flex; flex-direction: column; overflow: hidden; transition: transform .35s cubic-bezier(.2, .7, .2, 1), border-color .35s, box-shadow .35s; }
-    .project[hidden] { display: none; }
-    a.project:hover { transform: translateY(-6px); border-color: var(--yellow-line); box-shadow: var(--shadow), 0 20px 50px -25px rgba(255, 212, 59, .45); }
-    .p-media { position: relative; aspect-ratio: 16 / 9; overflow: hidden; background: #18181b; }
-    .p-media img { width: 100%; height: 100%; object-fit: cover; transition: transform .7s cubic-bezier(.2, .7, .2, 1); }
-    a.project:hover .p-media img { transform: scale(1.06); }
-    .p-media::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 55%, rgba(9, 9, 11, .55)); pointer-events: none; }
-    .p-badge {
-      position: absolute; top: 14px; left: 14px; z-index: 1; display: inline-flex; align-items: center; gap: 6px;
-      padding: 6px 12px; border-radius: 999px; font-size: .76rem; font-weight: 600;
-      background: rgba(9, 9, 11, .55); border: 1px solid rgba(255, 255, 255, .15);
-      -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
-    }
-    .p-badge i { color: var(--yellow); }
-    .p-body { padding: 22px 24px 24px; display: flex; flex-direction: column; gap: 12px; flex: 1; }
-    .p-title { font-family: var(--font-display); font-size: 1.4rem; letter-spacing: -.01em; margin: 0; }
-    .p-desc { color: var(--muted); margin: 0; }
-    .p-link { margin-top: auto; padding-top: 6px; display: inline-flex; align-items: center; gap: 8px; color: var(--yellow); font-weight: 600; font-size: .92rem; }
-    .p-link i { transition: transform .25s; }
-    a.project:hover .p-link i { transform: translateX(5px); }
-    .p-link.off { color: var(--faint); font-weight: 500; }
-    .project.featured { grid-column: 1 / -1; flex-direction: row; }
-    .project.featured .p-media { flex: 1.25; aspect-ratio: auto; min-height: 340px; }
-    .project.featured .p-body { flex: 1; padding: clamp(24px, 3.5vw, 40px); justify-content: center; }
-    .project.featured .p-title { font-size: clamp(1.6rem, 3vw, 2.2rem); }
-    .empty { text-align: center; padding: 40px 20px; color: var(--muted); }
-    .empty i { font-size: 1.6rem; color: var(--yellow); margin-bottom: 10px; display: block; }
-
-    .backrooms {
-      width: 100%; height: 100%; display: grid; place-items: center;
-      background:
-        radial-gradient(ellipse at 50% 40%, rgba(255, 250, 200, .35), transparent 45%),
-        radial-gradient(ellipse at center, transparent 35%, rgba(0, 0, 0, .7) 100%),
-        repeating-linear-gradient(90deg, rgba(110, 88, 20, .3) 0 2px, transparent 2px 36px),
-        repeating-linear-gradient(0deg, rgba(255, 255, 255, .05) 0 1px, transparent 1px 12px),
-        linear-gradient(180deg, #d9c66c, #a8913c);
-      animation: flicker 6s infinite;
-      transition: transform .7s cubic-bezier(.2, .7, .2, 1);
-    }
-    .backrooms span { font-family: var(--font-display); font-weight: 700; letter-spacing: .45em; font-size: clamp(1.1rem, 3vw, 1.7rem); color: rgba(45, 34, 0, .5); padding-left: .45em; }
-    @keyframes flicker { 0%, 100% { filter: brightness(1); } 47% { filter: brightness(1); } 48% { filter: brightness(.7); } 49% { filter: brightness(1.05); } 51% { filter: brightness(.8); } 52% { filter: brightness(1); } }
-
-    /* ---------- Competenze ---------- */
-    .skills { display: grid; grid-template-columns: 1.45fr 1fr; gap: 22px; }
-    .panel { padding: clamp(22px, 3.5vw, 32px); }
-    .panel-title { display: flex; align-items: center; gap: 12px; font-family: var(--font-display); font-size: 1.2rem; margin: 0 0 20px; }
-    .tech { display: grid; grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); gap: 12px; }
-    .tech-item {
-      display: flex; flex-direction: column; align-items: center; gap: 10px; padding: 18px 8px 14px;
-      border-radius: 16px; background: var(--tile); border: 1px solid var(--border); text-align: center;
-      transition: transform .25s, border-color .25s, box-shadow .25s, background .25s;
-    }
-    .tech-item i { font-size: 2.2rem; line-height: 1; }
-    .tech-item .fa-unity { color: #fff; }
-    .devicon-csharp-plain.colored { color: #a179dc; }
-    .devicon-c-plain.colored, .devicon-cplusplus-plain.colored { color: #659ad2; }
-    .tech-item .fa-database { color: #4dabf7; }
-    .tech-item span { font-size: .82rem; color: var(--muted); font-weight: 500; }
-    .tech-item:hover { transform: translateY(-4px); border-color: var(--yellow-line); background: rgba(255, 212, 59, .06); box-shadow: 0 12px 30px -14px rgba(255, 212, 59, .5); }
-    .soft { display: grid; gap: 12px; }
-    .soft-item { display: flex; align-items: center; gap: 14px; padding: 14px 16px; border-radius: 16px; background: var(--tile); border: 1px solid var(--border); font-weight: 500; }
-
-    /* ---------- Formazione ---------- */
-    .education { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; align-items: start; }
-    .edu-school { font-family: var(--font-display); font-size: 1.15rem; font-weight: 600; margin: 0; }
-    .muted { color: var(--muted); }
-    .edu-line { color: var(--muted); margin: 4px 0 0; display: flex; align-items: center; gap: 8px; }
-    .edu-line i { color: var(--yellow); width: 16px; text-align: center; }
-    .lang { display: grid; gap: 16px; }
-    .lang-row { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 8px; font-weight: 600; }
-    .lang-row span { color: var(--muted); font-weight: 400; font-size: .88rem; }
-    .bar { height: 8px; border-radius: 99px; background: rgba(255, 255, 255, .08); overflow: hidden; }
-    .bar i { display: block; height: 100%; width: var(--w); border-radius: inherit; background: linear-gradient(90deg, var(--yellow-2), var(--yellow)); box-shadow: 0 0 14px rgba(255, 212, 59, .5); }
-
-    /* ---------- Certificazioni ---------- */
-    .disclaimer {
-      display: flex; align-items: flex-start; gap: 14px; padding: 18px 22px; margin-bottom: 22px;
-      border-radius: 18px; background: rgba(255, 212, 59, .08); border: 1px solid var(--yellow-line);
-      -webkit-backdrop-filter: var(--blur); backdrop-filter: var(--blur);
-    }
-    .disclaimer > i { color: var(--yellow); font-size: 1.25rem; margin-top: 3px; }
-    .disclaimer p { margin: 0; color: #e7e5e4; }
-    .disclaimer strong { color: var(--yellow); }
-    .disclaimer time { font-family: var(--font-mono); font-size: .88em; color: var(--yellow-light); white-space: nowrap; }
-    .certs { display: grid; grid-template-columns: 1fr 1.7fr; gap: 22px; align-items: start; }
-    .cert { padding: clamp(22px, 3.5vw, 30px); }
-    .cert-head { display: flex; align-items: center; gap: 14px; margin-bottom: 18px; }
-    .cert-head .ic { width: 52px; height: 52px; border-radius: 15px; font-size: 1.35rem; }
-    .cert-head h3 { font-family: var(--font-display); font-size: 1.25rem; margin: 0; }
-    .cert-head span { font-family: var(--font-mono); font-size: .82rem; color: var(--muted); }
-    .cert-big { font-family: var(--font-display); font-size: 2.6rem; font-weight: 700; line-height: 1; margin: 6px 0 4px; }
-    .cert-list { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-    .cert-list li { display: flex; align-items: flex-start; gap: 10px; padding: 11px 14px; border-radius: 13px; background: var(--tile); border: 1px solid var(--border); font-size: .93rem; }
-    .cert-list li i { color: var(--yellow); margin-top: 4px; font-size: .85rem; }
-
-    /* ---------- Contatti ---------- */
-    .contact { position: relative; isolation: isolate; padding: clamp(28px, 6vw, 64px); text-align: center; overflow: hidden; }
-    .contact::before { content: ""; position: absolute; width: 420px; height: 420px; border-radius: 50%; background: var(--yellow); filter: blur(120px); opacity: .14; top: -220px; left: 50%; transform: translateX(-50%); z-index: -1; pointer-events: none; }
-    .contact .sec-sub { margin: 0 auto; }
-    .email {
-      display: inline-block; margin: 28px 0 18px; font-family: var(--font-display); font-weight: 600;
-      font-size: clamp(1.15rem, 4.2vw, 2.1rem); letter-spacing: -.01em; overflow-wrap: anywhere; transition: color .2s;
-    }
-    .email:hover { color: var(--yellow); }
-    .contact-actions { display: flex; justify-content: center; flex-wrap: wrap; gap: 12px; }
-    .contact-links { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; margin-top: 36px; text-align: left; }
-    .c-link { display: flex; align-items: center; gap: 14px; padding: 16px 18px; border-radius: 18px; background: var(--tile); border: 1px solid var(--border); transition: transform .2s, border-color .2s, background .2s; }
-    .c-link:hover { transform: translateY(-3px); border-color: var(--yellow-line); background: rgba(255, 212, 59, .06); }
-    .c-link b { display: block; font-weight: 600; }
-    .c-link small { color: var(--muted); font-size: .82rem; }
-    .c-link .arrow { margin-left: auto; color: var(--faint); font-size: .8rem; transition: color .2s, transform .2s; }
-    .c-link:hover .arrow { color: var(--yellow); transform: translate(2px, -2px); }
-
-    /* ---------- Footer ---------- */
-    .footer {
-      margin: 90px auto 24px; padding: 18px 24px; border-radius: 20px;
-      display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px 20px;
-      color: var(--muted); font-size: .88rem; box-shadow: none;
-    }
-    .footer time { color: var(--text); }
-    .footer a { display: inline-flex; align-items: center; gap: 8px; color: var(--text); }
-    .footer a:hover { color: var(--yellow); }
-
-    /* ---------- Toast ---------- */
-    .toast {
-      position: fixed; left: 50%; bottom: 24px; z-index: 60; padding: 12px 20px; border-radius: 999px;
-      background: rgba(24, 24, 27, .85); border: 1px solid var(--yellow-line); color: var(--text); font-size: .92rem;
-      -webkit-backdrop-filter: var(--blur); backdrop-filter: var(--blur);
-      transform: translate(-50%, 20px); opacity: 0; pointer-events: none; transition: opacity .3s, transform .3s;
-    }
-    .toast.show { opacity: 1; transform: translate(-50%, 0); }
-
-    /* ---------- Animazioni di comparsa ---------- */
-    .js .reveal { opacity: 0; translate: 0 28px; transition: opacity .8s ease, translate .8s cubic-bezier(.2, .7, .2, 1); transition-delay: var(--d, 0s); }
-    .js .reveal.in { opacity: 1; translate: none; }
-
-    /* ---------- Responsive ---------- */
-    @media (max-width: 960px) {
-      .nav { padding-left: 14px; }
-      .nav-toggle { display: grid; }
-      .nav-cta { display: none; }
-      .nav-links {
-        position: absolute; top: calc(100% + 10px); left: 0; right: 0; flex-direction: column; gap: 4px; padding: 10px;
-        border-radius: 22px; background: rgba(20, 20, 24, .95); border: 1px solid var(--border); box-shadow: var(--shadow);
-        opacity: 0; visibility: hidden; translate: 0 -8px; transition: opacity .25s, translate .25s, visibility .25s;
-      }
-      .nav.open .nav-links { opacity: 1; visibility: visible; translate: none; }
-      .nav-links a { padding: 12px 16px; font-size: 1rem; }
-      .hero { grid-template-columns: 1fr; gap: 40px; padding-top: 110px; min-height: auto; }
-      .hero-visual { width: min(420px, 88%); }
-      .facts { grid-template-columns: 1fr 1fr; }
-      .skills, .education, .certs { grid-template-columns: 1fr; }
-    }
-    @media (max-width: 760px) {
-      .projects { grid-template-columns: 1fr; }
-      .project.featured { flex-direction: column; }
-      .project.featured .p-media { aspect-ratio: 16 / 9; min-height: 0; }
-      .cert-list { grid-template-columns: 1fr; }
-      .section { padding-top: 96px; }
-      .count { margin-left: 0; width: 100%; }
-    }
-    @media (max-width: 520px) {
-      .facts { gap: 10px; }
-      .fact { padding: 16px; }
-      .hero-visual { width: 100%; }
-      .float-chip { display: none; }
-      .editor-code { font-size: .74rem; }
-      .hero-actions .btn { flex: 1 1 auto; }
-      .code { white-space: normal; font-size: .8rem; }
-      .code .cm { display: block; margin-top: 4px; }
-    }
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after { animation: none !important; transition: none !important; }
-      html { scroll-behavior: auto; }
-      .js .reveal { opacity: 1; translate: none; }
-    }
-  </style>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="theme-color" content="#0b0807"/>
+  <meta name="description" content="GERPHYON — Survival-Horror voxel con elementi Dungeon Crawler e platform: esplora in prima persona una Magione enorme piena di Mostri e misteri."/>
+  <title>GERPHYON</title>
+  <script>document.documentElement.classList.add('js')</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;600&display=swap"/>
+  <link rel="preload" href="./assets/fonts/GERPHYON.ttf" as="font" type="font/ttf" crossorigin/>
+  <link rel="stylesheet" href="./assets/css/styles.css"/>
+  <link rel="icon" href="./assets/img/Logo64x64.png" type="image/png"/>
 </head>
 <body>
-
-  <div class="bg" aria-hidden="true">
-    <div class="blob b1"></div>
-    <div class="blob b2"></div>
-    <div class="blob b3"></div>
-    <div class="grid-lines"></div>
-  </div>
-
-  <!-- ================= NAVBAR ================= -->
-  <header class="nav glass" id="top-nav">
-    <a href="#home" class="logo" aria-label="Manuel Causo, torna all'inizio">
-      <span class="logo-mark">MC</span>
-      <span>Manuel Causo</span>
+<a class="skip-link" href="#main">Salta al contenuto</a>
+<header class="site-header">
+  <div class="container navbar">
+    <a class="brand" href="./index.html" aria-label="GERPHYON — Home">
+      <img src="./assets/img/Logo64x64.png" alt="" width="64" height="64"/>
+      <span class="brand-title">GERPHYON</span>
     </a>
-    <ul class="nav-links" id="nav-links">
-      <li><a href="#chi-sono">Chi sono</a></li>
-      <li><a href="#progetti">Progetti</a></li>
-      <li><a href="#competenze">Competenze</a></li>
-      <li><a href="#formazione">Formazione</a></li>
-      <li><a href="#certificazioni">Certificazioni</a></li>
-      <li><a href="#contatti">Contatti</a></li>
-    </ul>
-    <a href="#contatti" class="btn btn-primary btn-sm nav-cta">Contattami <i class="fa-solid fa-arrow-right"></i></a>
-    <button class="nav-toggle" type="button" aria-label="Apri il menu" aria-expanded="false" aria-controls="nav-links">
-      <i class="fa-solid fa-bars"></i>
-    </button>
-  </header>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Apri menu"><span></span></button>
+    <nav id="site-nav" class="site-nav" aria-label="Principale">
+      <a href="./index.html" aria-current="page">HOME</a>
+      <a href="./versions.html">CHANGELOG</a>
+      <a href="./blog.html">BLOG</a>
+      <a href="./credits.html">CREDITI</a>
+      <a class="btn btn-sm" href="https://store.steampowered.com/app/4841430/GERPHYON_The_Ender_Mansion/" target="_blank" rel="noopener">WISHLIST</a>
+    </nav>
+  </div>
+</header>
 
-  <main>
-    <!-- ================= HERO ================= -->
-    <section class="wrap hero" id="home">
-      <div>
-        <span class="pill glass reveal"><span class="dot"></span>Developer · Game &amp; Tools</span>
-        <h1 class="hero-title reveal" style="--d:.08s">Manuel<br><span class="grad">Causo</span></h1>
-        <p class="hero-role reveal" style="--d:.16s">Developer <span>/</span> C# &amp; Unity <span>/</span> Web</p>
-        <p class="hero-lead reveal" style="--d:.24s">
-          Sviluppo videogiochi e tool in C# con Unity, guido un piccolo team di sviluppo e realizzo anche progetti web.
-          Imparo in fretta e mi adatto con facilità a contesti e tecnologie diverse.
-        </p>
+<main id="main">
+<section class="hero">
+  <div class="slideshow" aria-hidden="true">
+    <div class="slide" style="background-image:url('./assets/img/slide1.png')"></div>
+  </div>
+  <div class="hero-fx" aria-hidden="true"></div>
+  <div class="eyes" data-eyes="6" data-eyes-area="edges" aria-hidden="true"></div>
+  <div class="container hero-content">
+    <a class="hero-badge" href="./versions.html" data-latest-version hidden>ULTIMO AGGIORNAMENTO <b></b></a>
+    <h1 class="hero-title">
+      <span class="hero-title-small">BENVENUTI NEL</span>
+      <span class="hero-title-big">GERPHYON</span>
+    </h1>
+    <p class="hero-text">Un Survival-Horror voxel con elementi Dungeon Crawler e platform. Esplora in prima persona ambienti distopici in una Magione enorme, piena di Mostri e di misteri da scoprire!</p>
+    <div class="hero-actions">
+      <a class="btn btn-lg" href="https://store.steampowered.com/app/4841430/GERPHYON_The_Ender_Mansion/" target="_blank" rel="noopener">Wishlist su Steam</a>
+      <a class="btn btn-ghost" href="./versions.html">Changelog <span class="px-arrow" aria-hidden="true"></span></a>
+    </div>
+  </div>
+  <a class="scroll-hint" href="#magione" aria-label="Scorri alla magione"><span class="px-chev" aria-hidden="true"></span></a>
+  <script src="./assets/js/slideshow.js"></script>
+</section>
 
-        <div class="code glass reveal" style="--d:.32s" aria-label='Person m = new Person("EnderPlayer");'>
-          <span class="ty">Person</span> <span class="va">m</span> <span class="pu">=</span> <span class="kw">new</span> <span class="ty">Person</span><span class="pu">(</span><span class="st">"EnderPlayer"</span><span class="pu">);</span>
-          <span class="cm" id="typed">// Crea un oggetto: persona.</span><span class="caret" aria-hidden="true"></span>
-        </div>
+<div class="cornice" aria-hidden="true"></div>
 
-        <div class="hero-actions reveal" style="--d:.4s">
-          <a href="#progetti" class="btn btn-primary"><i class="fa-solid fa-layer-group"></i> Guarda i progetti</a>
-          <a href="#contatti" class="btn btn-glass"><i class="fa-regular fa-envelope"></i> Contattami</a>
-        </div>
-
-        <div class="socials reveal" style="--d:.48s">
-          <a class="social" href="https://github.com/303Manuel303" target="_blank" rel="noopener" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
-          <a class="social" href="https://gamejolt.com/@End3rPl4yer" target="_blank" rel="noopener" aria-label="Game Jolt"><i class="fa-solid fa-gamepad"></i></a>
-          <a class="social" href="https://www.instagram.com/manuel_causo/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-        </div>
+<section class="section section-grid" id="magione">
+  <div class="container">
+    <div class="section-head">
+      <div data-reveal>
+        <span class="kicker">La magione</span>
+        <h2 class="h2">Cosa ti <span class="gold">aspetta</span></h2>
+        <span class="carpet" aria-hidden="true"></span>
       </div>
+      <img class="peek-cat" src="./assets/img/Gatto.png" alt="" width="334" height="572"/>
+    </div>
+    <div class="cards">
+      <article class="card feature-card" data-reveal>
+        <span class="card-num" aria-hidden="true">01</span>
+        <h3>Friend</h3>
+        <p>I "FRIEND” sono i mostri del gioco: ognuno è davvero unico e ha un attacco tutto suo. Gli attacchi sono a 360°: possono modificare l’ambiente, attaccarti attraverso lo schermo, inquinarti di suoni o di disturbi nella visuale, costringerti a muoverti in un modo ben preciso… e molto altro. Qui non si combatte: si sopravvive!.</p>
+      </article>
+      <article class="card feature-card" data-reveal style="--d:.1s">
+        <span class="card-num" aria-hidden="true">02</span>
+        <h3>Atmosfera (LE STANZE)</h3>
+        <p>Il gioco si svolge all’interno della magione più grande mai costruita, un luogo immenso e misterioso progettato per ospitare i FRIEND. Ogni ala della magione è un mondo a sé: puoi ritrovarti a passare da una semplice cucina a un’intera città incastonata tra le mura, da un parco divertimenti a un ospedale abbandonato…</p>
+      </article>
+      <article class="card feature-card" data-reveal style="--d:.2s">
+        <span class="card-num" aria-hidden="true">03</span>
+        <h3>Ripetibile <span class="tag">WIP</span></h3>
+        <p>Il gioco è pensato per essere altamente ripetibile e rigiocabile. Oltre a una vasta gamma di achievement (vere e proprie sfide da completare), anche la generazione del mondo cambia a ogni partita, offrendo situazioni, percorsi e incontri sempre diversi.Il gioco offre pure la possibilità di trovare collezzionabili unici e rivederli nel museo!</p>
+      </article>
+    </div>
+  </div>
+</section>
 
-      <div class="hero-visual reveal" style="--d:.2s">
-        <div class="editor glass">
-          <div class="editor-bar">
-            <span class="editor-dots" aria-hidden="true"><i></i><i></i><i></i></span>
-            <span class="editor-file"><i class="devicon-csharp-plain colored"></i> Person.cs</span>
-          </div>
-          <div class="editor-code" role="img" aria-label="Classe C# Person: nick EnderPlayer, stack C# e Unity, curioso true">
-<span class="ln"><span class="kw">public class</span> <span class="ty">Person</span></span>
-<span class="ln"><span class="pu">{</span></span>
-<span class="ln">    <span class="ty">string</span> <span class="va">nick</span> <span class="pu">=</span> <span class="st">"EnderPlayer"</span><span class="pu">;</span></span>
-<span class="ln">    <span class="ty">string</span><span class="pu">[]</span> <span class="va">stack</span> <span class="pu">= {</span> <span class="st">"C#"</span><span class="pu">,</span> <span class="st">"Unity"</span> <span class="pu">};</span></span>
-<span class="ln">    <span class="ty">bool</span> <span class="va">curioso</span> <span class="pu">=</span> <span class="kw">true</span><span class="pu">;</span></span>
-<span class="ln"> </span>
-<span class="ln">    <span class="kw">void</span> <span class="fn">Vivi</span><span class="pu">() =&gt;</span> <span class="fn">Impara</span><span class="pu">();</span></span>
-<span class="ln"><span class="pu">}</span></span>
-          </div>
-          <div class="editor-foot"><span class="dot"></span> aka End3rPl4yer</div>
-        </div>
-        <span class="float-chip glass fc1"><i class="devicon-csharp-plain colored"></i> C#</span>
-        <span class="float-chip glass fc2"><i class="fa-brands fa-unity"></i> Unity</span>
-        <span class="float-chip glass fc3"><i class="fa-solid fa-code" style="color:var(--yellow)"></i> Web</span>
-      </div>
-    </section>
+<div class="cornice" aria-hidden="true"></div>
 
-    <!-- ================= CHI SONO ================= -->
-    <section class="wrap section" id="chi-sono">
-      <div class="sec-head reveal">
-        <span class="sec-kicker">01 — Chi sono</span>
-        <h2 class="sec-title">Un programmatore con una <span class="grad">forte passione</span></h2>
-      </div>
-      <div class="facts">
-          <div class="fact glass spot reveal" style="--d:.05s"><span class="ic"><i class="fa-solid fa-code"></i></span><div><small>Linguaggio principale</small><b>C#</b></div></div>
-          <div class="fact glass spot reveal" style="--d:.1s"><span class="ic"><i class="fa-brands fa-unity"></i></span><div><small>Engine</small><b>Unity</b></div></div>
-          <div class="fact glass spot reveal" style="--d:.15s"><span class="ic"><i class="fa-solid fa-graduation-cap"></i></span><div><small>Formazione</small><b>Diploma in Informatica</b></div></div>
-          <div class="fact glass spot reveal" style="--d:.2s"><span class="ic"><i class="fa-solid fa-language"></i></span><div><small>Lingue</small><b>Italiano · Inglese</b></div></div>
-      </div>
-    </section>
+<section class="section section-genre">
+  <div class="container genre-grid">
+    <div class="genre-text" data-reveal>
+      <span class="kicker">La storia</span>
+      <h2 class="h2">Una porta che si <span class="gold">chiude</span> alle tue spalle</h2>
+      <span class="carpet" aria-hidden="true"></span>
 
-    <!-- ================= PROGETTI ================= -->
-    <section class="wrap section" id="progetti">
-      <div class="sec-head reveal">
-        <span class="sec-kicker">02 — Progetti</span>
-        <h2 class="sec-title">Cose che ho <span class="grad">costruito</span></h2>
-        <p class="sec-sub">Videogiochi, tool e piccoli progetti web. Clicca su un progetto per aprire la sua pagina.</p>
-      </div>
+      <p>
+      Sei un ragazzino che una notte sente delle <strong>voci</strong> provenire da una magione abbandonata. Spinto dalla curiosità,
+      ti intrufoli dentro… ma appena varchi la soglia, <strong>la porta dietro di te si blocca</strong>.
+      Il panico sale, e l’unica scelta è andare avanti per trovare un’uscita.
+      </p>
 
-      <div class="toolbar reveal">
-        <label class="search">
-          <i class="fa-solid fa-magnifying-glass"></i>
-          <input type="search" id="search" placeholder="Cerca progetti, linguaggi, tag..." aria-label="Cerca progetti" autocomplete="off">
-        </label>
-        <div class="chips" role="group" aria-label="Filtra per categoria">
-          <button class="chip" type="button" data-cat="all" aria-pressed="true">Tutti</button>
-          <button class="chip" type="button" data-cat="game" aria-pressed="false">Giochi</button>
-          <button class="chip" type="button" data-cat="tool" aria-pressed="false">Tool</button>
-          <button class="chip" type="button" data-cat="web" aria-pressed="false">Web</button>
-        </div>
-        <span class="count" id="count" aria-live="polite"></span>
-      </div>
+      <p>
+      Lungo il cammino troverai i foglietti di <strong>Maxwell</strong>, un investigatore incaricato del
+      <strong>Caso 892</strong>: una serie di persone scomparse nel nulla. E secondo Maxwell, questa magione
+      c’entra qualcosa.
+      </p>
 
-      <div class="projects">
-        <a class="project featured glass spot reveal" data-cat="game" href="pages/Gerphyon/index.html">
-          <div class="p-media">
-            <span class="p-badge"><i class="fa-solid fa-star"></i> In evidenza</span>
-            <img src="assets/img/projects/gerphyon.webp" alt="Screenshot di GERPHYON: The Ender Mansion" width="960" height="540" loading="lazy">
-          </div>
-          <div class="p-body">
-            <h3 class="p-title">GERPHYON: The Ender Mansion</h3>
-            <p class="p-desc">Gioco d'avventura in stile DOORS: raggiungi la stanza numero mille nella magione infestata!</p>
-            <div class="tags"><span class="tag">C#</span><span class="tag">Unity</span><span class="tag">GitHub</span><span class="tag">Web</span></div>
-            <span class="p-link">Apri il progetto <i class="fa-solid fa-arrow-right"></i></span>
-          </div>
-        </a>
+      <p>
+      A sbarrarti la strada ci sono i <strong>mostri</strong>: alcuni ostili, altri sorprendentemente amichevoli.
+      E proprio loro ti racconteranno qualcosa di molto strano…
+      </p>
 
-        <a class="project glass spot reveal" data-cat="game" href="pages/CubePit/CubePit.html">
-          <div class="p-media">
-            <img src="assets/img/projects/cubepit.webp" alt="Screenshot di Cube-Pit 2" width="960" height="517" loading="lazy">
-          </div>
-          <div class="p-body">
-            <h3 class="p-title">Cube-Pit 2</h3>
-            <p class="p-desc">Gioco survival multiplayer: sopravvivi a tutti i costi nella fossa!</p>
-            <div class="tags"><span class="tag">C#</span><span class="tag">Unity</span><span class="tag">Multiplayer</span></div>
-            <span class="p-link">Apri il progetto <i class="fa-solid fa-arrow-right"></i></span>
-          </div>
-        </a>
+      <p class="callout">
+        <strong>“Questa è la nostra vita.”</strong>
+        <span>Cosa si nasconde davvero dentro la magione?</span>
+      </p>
+    </div>
+    <figure class="genre-door" data-reveal style="--d:.15s">
+      <img src="./assets/img/porta.png" alt="Una porta di legno che si apre su una luce dorata" width="688" height="786"/>
+      <figcaption>Oltre la prossima porta...</figcaption>
+    </figure>
+  </div>
+</section>
+</main>
 
-        <a class="project glass spot reveal" style="--d:.08s" data-cat="tool" href="pages/HouseGenerator/HouseGenerator.html">
-          <div class="p-media">
-            <img src="assets/img/projects/housegenerator.webp" alt="Screenshot di House Generator Minecraft" width="960" height="540" loading="lazy">
-          </div>
-          <div class="p-body">
-            <h3 class="p-title">House Generator Minecraft</h3>
-            <p class="p-desc">Generatore di case in stile bizzarro che crea il file NBT della struttura, pronto da usare su Minecraft.</p>
-            <div class="tags"><span class="tag">C#</span><span class="tag">Unity</span><span class="tag">NBT File</span><span class="tag">Minecraft</span></div>
-            <span class="p-link">Apri il progetto <i class="fa-solid fa-arrow-right"></i></span>
-          </div>
-        </a>
+<div class="cornice" aria-hidden="true"></div>
+<footer class="site-footer">
+  <div class="eyes" data-eyes="5" aria-hidden="true"></div>
+  <div class="container footer-inner">
+    <a class="footer-brand" href="./index.html" aria-label="GERPHYON — Home">
+      <img src="./assets/img/Logo64x64.png" alt="" width="64" height="64"/>
+      <span class="brand-title">GERPHYON</span>
+    </a>
+    <p class="footer-tagline">Qualcosa ti osserva.</p>
+    <nav class="footer-links" aria-label="Secondaria">
+      <a href="./index.html">Home</a>
+      <a href="./versions.html">Changelog</a>
+      <a href="./blog.html">Blog</a>
+      <a href="./credits.html">Crediti</a>
+    </nav>
+    <a href="https://discord.gg/F6qgCj7XM7" class="btn btn-blood discord">
+      <svg class="discord-icon" viewBox="0 0 8 8" aria-hidden="true" shape-rendering="crispEdges"><path fill="currentColor" fill-rule="evenodd" d="M1 1h6v1h1v3H7v1H4v1H3v1H2V6H1V5H0V2h1zM2 3v1h1V3zm3 0v1h1V3z"/></svg>
+      Unisciti al nostro Discord
+    </a>
+    <p class="copyright">© <span id="year"></span> GERPHYON</p>
+  </div>
+</footer>
+<script src="./assets/js/main.js"></script>
 
-        <article class="project glass spot reveal" data-cat="web">
-          <div class="p-media">
-            <img src="assets/img/projects/animelist.webp" alt="Screenshot del sito Lista Cartoni" width="960" height="467" loading="lazy">
-          </div>
-          <div class="p-body">
-            <h3 class="p-title">Lista Cartoni</h3>
-            <p class="p-desc">Un sito dall'estetica semplice che, tramite un database e PHP, mostra una lista di serie a cartoni animati con i relativi voti.</p>
-            <div class="tags"><span class="tag">HTML</span><span class="tag">PHP</span><span class="tag">SQL</span></div>
-            <span class="p-link off"><i class="fa-solid fa-lock"></i> Pagina non disponibile</span>
-          </div>
-        </article>
-
-        <article class="project glass spot reveal" style="--d:.08s" data-cat="game">
-          <div class="p-media">
-            <div class="backrooms" role="img" aria-label="Illustrazione in stile Backrooms"><span></span></div>
-          </div>
-          <div class="p-body">
-            <h3 class="p-title">BackRooms Game</h3>
-            <p class="p-desc">Gioco ispirato alle BackRooms: raccogli i 5 cubi senza farti prendere dal glitch.</p>
-            <div class="tags"><span class="tag">C#</span><span class="tag">Unity</span><span class="tag">IA (Behavior Trees)</span></div>
-            <span class="p-link off"><i class="fa-solid fa-lock"></i> Pagina non disponibile</span>
-          </div>
-        </article>
-      </div>
-
-      <div class="empty glass" id="empty" hidden>
-        <i class="fa-regular fa-face-meh"></i>
-        Nessun progetto trovato. Prova con un'altra parola o categoria.
-      </div>
-    </section>
-
-    <!-- ================= COMPETENZE ================= -->
-    <section class="wrap section" id="competenze">
-      <div class="sec-head reveal">
-        <span class="sec-kicker">03 — Competenze</span>
-        <h2 class="sec-title">Il mio <span class="grad">toolkit</span></h2>
-        <p class="sec-sub">I linguaggi e gli strumenti che uso, insieme alle competenze che porto in ogni team.</p>
-      </div>
-      <div class="skills">
-        <div class="panel glass spot reveal">
-          <h3 class="panel-title"><span class="ic"><i class="fa-solid fa-terminal"></i></span> Linguaggi &amp; strumenti</h3>
-          <div class="tech">
-            <div class="tech-item"><i class="devicon-csharp-plain colored"></i><span>C#</span></div>
-            <div class="tech-item"><i class="fa-brands fa-unity"></i><span>Unity</span></div>
-            <div class="tech-item"><i class="devicon-c-plain colored"></i><span>C</span></div>
-            <div class="tech-item"><i class="devicon-cplusplus-plain colored"></i><span>C++</span></div>
-            <div class="tech-item"><i class="devicon-java-plain colored"></i><span>Java</span></div>
-            <div class="tech-item"><i class="devicon-python-plain colored"></i><span>Python</span></div>
-            <div class="tech-item"><i class="devicon-html5-plain colored"></i><span>HTML</span></div>
-            <div class="tech-item"><i class="devicon-css3-plain colored"></i><span>CSS</span></div>
-            <div class="tech-item"><i class="devicon-javascript-plain colored"></i><span>JavaScript</span></div>
-            <div class="tech-item"><i class="devicon-php-plain colored"></i><span>PHP</span></div>
-            <div class="tech-item"><i class="fa-solid fa-database"></i><span>SQL</span></div>
-            <div class="tech-item"><i class="devicon-git-plain colored"></i><span>Git</span></div>
-          </div>
-        </div>
-        <div class="panel glass spot reveal" style="--d:.1s">
-          <h3 class="panel-title"><span class="ic"><i class="fa-solid fa-user-gear"></i></span> Soft skills</h3>
-          <div class="soft">
-            <div class="soft-item"><span class="ic"><i class="fa-solid fa-people-group"></i></span>Lavoro in gruppo e in autonomia</div>
-            <div class="soft-item"><span class="ic"><i class="fa-solid fa-heart-pulse"></i></span>Gestione di situazioni di stress</div>
-            <div class="soft-item"><span class="ic"><i class="fa-solid fa-rocket"></i></span>Intraprendenza</div>
-            <div class="soft-item"><span class="ic"><i class="fa-solid fa-shuffle"></i></span>Flessibilità</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ================= FORMAZIONE ================= -->
-    <section class="wrap section" id="formazione">
-      <div class="sec-head reveal">
-        <span class="sec-kicker">04 — Formazione</span>
-        <h2 class="sec-title">Istruzione &amp; <span class="grad">lingue</span></h2>
-      </div>
-      <div class="education">
-        <div class="panel glass spot reveal" style="--d:.1s">
-          <h3 class="panel-title"><span class="ic"><i class="fa-solid fa-graduation-cap"></i></span> Istruzione</h3>
-          <p class="muted" style="margin:0 0 4px;font-size:.85rem;font-weight:600;letter-spacing:.04em;text-transform:uppercase">Diploma di maturità</p>
-          <p class="edu-school">Istituto Enrico Medi</p>
-          <p class="edu-line"><i class="fa-solid fa-location-dot"></i> Galatone (LE)</p>
-          <p class="edu-line"><i class="fa-solid fa-laptop-code"></i> Percorso: Informatica</p>
-        </div>
-        <div class="panel glass spot reveal" style="--d:.15s">
-          <h3 class="panel-title"><span class="ic"><i class="fa-solid fa-language"></i></span> Lingue</h3>
-          <div class="lang">
-            <div>
-              <div class="lang-row">Italiano <span>Madrelingua</span></div>
-              <div class="bar"><i style="--w:100%"></i></div>
-            </div>
-            <div>
-              <div class="lang-row">Inglese <span>Base</span></div>
-              <div class="bar"><i style="--w:35%"></i></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ================= CERTIFICAZIONI ================= -->
-    <section class="wrap section" id="certificazioni">
-      <div class="sec-head reveal">
-        <span class="sec-kicker">05 — Certificazioni</span>
-        <h2 class="sec-title">Certificati <span class="grad">conseguiti</span></h2>
-      </div>
-
-      <div class="disclaimer reveal" role="note">
-        <i class="fa-solid fa-triangle-exclamation"></i>
-        <p>
-          <strong>Disclaimer:</strong> le certificazioni elencate non sono necessariamente aggiornate: alcune potrebbero essere
-          scadute e potrebbero mancare quelle conseguite più di recente. Ultima revisione:
-          <time datetime="2026-10-14">14 ottobre 2026</time>.
-        </p>
-      </div>
-
-      <div class="certs">
-        <article class="cert glass spot reveal">
-          <div class="cert-head">
-            <span class="ic"><i class="fa-solid fa-award"></i></span>
-            <div><h3>EIPASS</h3><span>2022</span></div>
-          </div>
-          <p class="cert-big grad">7 Modules</p>
-          <p class="muted" style="margin:0 0 14px">User</p>
-          <p class="muted" style="margin:0;font-size:.94rem">Certificazione delle competenze digitali: EIPASS 7 Modules User.</p>
-        </article>
-
-        <article class="cert glass spot reveal" style="--d:.1s">
-          <div class="cert-head">
-            <span class="ic"><i class="fa-solid fa-network-wired"></i></span>
-            <div><h3>Cisco Networking Academy</h3><span>2022 — 2023</span></div>
-          </div>
-          <ul class="cert-list">
-            <li><i class="fa-solid fa-circle-check"></i>Introduction to Cybersecurity</li>
-            <li><i class="fa-solid fa-circle-check"></i>Cybersecurity Essentials</li>
-            <li><i class="fa-solid fa-circle-check"></i>Emerging Technologies Workshop: Model Driven Programmability</li>
-            <li><i class="fa-solid fa-circle-check"></i>IoT Fundamentals: Big Data &amp; Analytics</li>
-            <li><i class="fa-solid fa-circle-check"></i>IoT Fundamentals: Hackathon Playbook</li>
-            <li><i class="fa-solid fa-circle-check"></i>IT Essentials</li>
-            <li><i class="fa-solid fa-circle-check"></i>Introduction to Packet Tracer</li>
-          </ul>
-        </article>
-      </div>
-    </section>
-
-    <!-- ================= CONTATTI ================= -->
-    <section class="wrap section" id="contatti">
-      <div class="contact glass reveal">
-        <span class="sec-kicker">06 — Contatti</span>
-        <h2 class="sec-title">Costruiamo qualcosa <span class="grad">insieme</span></h2>
-        <p class="sec-sub">Hai un progetto, un'idea o una proposta? Scrivimi: rispondo volentieri.</p>
-
-        <a class="email" href="mailto:manuelcauso303@gmail.com">manuelcauso303@gmail.com</a>
-        <div class="contact-actions">
-          <a class="btn btn-primary" href="mailto:manuelcauso303@gmail.com"><i class="fa-solid fa-paper-plane"></i> Scrivimi</a>
-          <button class="btn btn-glass" type="button" data-copy="manuelcauso303@gmail.com"><i class="fa-regular fa-copy"></i> Copia email</button>
-        </div>
-
-        <div class="contact-links">
-          <a class="c-link" href="https://github.com/303Manuel303" target="_blank" rel="noopener">
-            <span class="ic"><i class="fa-brands fa-github"></i></span>
-            <span><b>GitHub</b><small>@303Manuel303</small></span>
-            <i class="fa-solid fa-arrow-up-right-from-square arrow"></i>
-          </a>
-          <a class="c-link" href="https://gamejolt.com/@End3rPl4yer" target="_blank" rel="noopener">
-            <span class="ic"><i class="fa-solid fa-gamepad"></i></span>
-            <span><b>Game Jolt</b><small>@End3rPl4yer</small></span>
-            <i class="fa-solid fa-arrow-up-right-from-square arrow"></i>
-          </a>
-          <a class="c-link" href="https://www.instagram.com/manuel_causo/" target="_blank" rel="noopener">
-            <span class="ic"><i class="fa-brands fa-instagram"></i></span>
-            <span><b>Instagram</b><small>@manuel_causo</small></span>
-            <i class="fa-solid fa-arrow-up-right-from-square arrow"></i>
-          </a>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer class="footer wrap glass">
-    <span>&copy; 2026 Manuel Causo</span>
-    <span>Ultimo aggiornamento: <time datetime="2026-10-14">14 ottobre 2026</time></span>
-    <a href="#home">Torna su <i class="fa-solid fa-arrow-up"></i></a>
-  </footer>
-
-  <div class="toast" id="toast" role="status" aria-live="polite"></div>
-
-  <script>
-    (() => {
-      const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-      // Menu mobile
-      const nav = document.getElementById('top-nav');
-      const toggle = nav.querySelector('.nav-toggle');
-      const setMenu = (open) => {
-        nav.classList.toggle('open', open);
-        toggle.setAttribute('aria-expanded', open);
-        toggle.innerHTML = open ? '<i class="fa-solid fa-xmark"></i>' : '<i class="fa-solid fa-bars"></i>';
-      };
-      toggle.addEventListener('click', () => setMenu(!nav.classList.contains('open')));
-      nav.querySelectorAll('.nav-links a').forEach(a => a.addEventListener('click', () => setMenu(false)));
-      document.addEventListener('keydown', e => { if (e.key === 'Escape') setMenu(false); });
-
-      const onScroll = () => nav.classList.toggle('scrolled', scrollY > 20);
-      addEventListener('scroll', onScroll, { passive: true });
-      onScroll();
-
-      // Link attivo nella navbar
-      const links = [...nav.querySelectorAll('.nav-links a')];
-      const spy = new IntersectionObserver(entries => {
-        entries.forEach(e => {
-          if (e.isIntersecting) links.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + e.target.id));
-        });
-      }, { rootMargin: '-45% 0px -50% 0px' });
-      document.querySelectorAll('main section[id]').forEach(s => spy.observe(s));
-
-      // Comparsa allo scroll
-      const io = new IntersectionObserver(entries => {
-        entries.forEach(e => {
-          if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
-        });
-      }, { threshold: .12, rootMargin: '0px 0px -40px 0px' });
-      document.querySelectorAll('.reveal').forEach(el => io.observe(el));
-
-      // Riflesso giallo che segue il puntatore
-      document.querySelectorAll('.spot').forEach(el => el.addEventListener('pointermove', e => {
-        const r = el.getBoundingClientRect();
-        el.style.setProperty('--mx', `${e.clientX - r.left}px`);
-        el.style.setProperty('--my', `${e.clientY - r.top}px`);
-      }));
-
-      // Ricerca e filtri progetti
-      const search = document.getElementById('search');
-      const chips = [...document.querySelectorAll('.chip')];
-      const cards = [...document.querySelectorAll('.project')];
-      const empty = document.getElementById('empty');
-      const count = document.getElementById('count');
-      cards.forEach(c => {
-        c.dataset.search = [c.querySelector('.p-title'), c.querySelector('.p-desc'), ...c.querySelectorAll('.tag')]
-          .map(n => n.textContent).join(' ').toLowerCase();
-      });
-      let cat = 'all';
-      const filter = () => {
-        const q = search.value.trim().toLowerCase();
-        let shown = 0;
-        cards.forEach(c => {
-          const ok = (cat === 'all' || c.dataset.cat === cat) && c.dataset.search.includes(q);
-          c.hidden = !ok;
-          if (ok) shown++;
-        });
-        empty.hidden = shown > 0;
-        count.textContent = shown === 1 ? '1 progetto' : `${shown} progetti`;
-      };
-      search.addEventListener('input', filter);
-      chips.forEach(ch => ch.addEventListener('click', () => {
-        cat = ch.dataset.cat;
-        chips.forEach(c => c.setAttribute('aria-pressed', c === ch));
-        filter();
-      }));
-      filter();
-
-      // Copia email
-      const toast = document.getElementById('toast');
-      let toastTimer;
-      const showToast = msg => {
-        toast.textContent = msg;
-        toast.classList.add('show');
-        clearTimeout(toastTimer);
-        toastTimer = setTimeout(() => toast.classList.remove('show'), 2200);
-      };
-      document.querySelectorAll('[data-copy]').forEach(b => b.addEventListener('click', async () => {
-        try {
-          await navigator.clipboard.writeText(b.dataset.copy);
-          showToast('Email copiata negli appunti');
-        } catch {
-          showToast(b.dataset.copy);
-        }
-      }));
-
-      // Commento "digitato" nella riga di codice
-      const typed = document.getElementById('typed');
-      const phrases = ['// Crea un oggetto: persona.', '// Programmatore C# & Unity.', '// Game developer.', '// Sempre curioso.'];
-      if (!reduceMotion) {
-        let i = 0, j = phrases[0].length, deleting = true;
-        const tick = () => {
-          if (deleting) {
-            j--;
-            if (j <= 3) { deleting = false; i = (i + 1) % phrases.length; }
-          } else if (++j >= phrases[i].length) {
-            deleting = true;
-            typed.textContent = phrases[i];
-            return setTimeout(tick, 2400);
-          }
-          typed.textContent = phrases[i].slice(0, j);
-          setTimeout(tick, deleting ? 28 : 60);
-        };
-        setTimeout(tick, 2800);
-      }
-    })();
-  </script>
+<script>if('serviceWorker' in navigator) { navigator.serviceWorker.register('./sw.js'); }</script>
 </body>
 </html>
